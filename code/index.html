@@ -153,7 +153,9 @@
 
     <div class="buttons">
       <div class="button" onclick="run();">Run</div>
-      <div class="button dev-only" onclick="encode();">Generate iframe</div>
+      <div class="button dev-only" onclick="encode();">Generate URL</div>
+      <div class="button dev-only" onclick="_clear();">Clear URL</div>
+      <div class="button dev-only" onclick="iframe();">Copy iframe</div>
     </div>
 
     <div class="output"></div>
@@ -181,6 +183,11 @@
         }
       });
 
+      function write(output) {
+        var outputDiv = document.querySelector(".output");
+        outputDiv.innerHTML += output;
+      }
+
       function run() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
@@ -200,15 +207,13 @@
         //   }
         // }
 
-        var output = "";
-
         console.log = function (message) {
-          output += `<p>${message}</p>`;
+          write(`<p>${message}</p>`);
           // originalConsoleLog.apply(console, arguments);
         };
 
         console.error = function (message) {
-          output += `<p>Error: <span class="error">${message}</span></p>`;
+          write(`<p>Error: <span class="error">${message}</span></p>`);
           // originalConsoleError.apply(console, arguments);
         };
 
@@ -217,8 +222,7 @@
             eval(code);
 
             // Display the output
-            var outputDiv = document.querySelector(".output");
-            outputDiv.innerHTML += output;
+            
         } catch (error) {
             // Handle any exceptions
             console.error("Error: " + error.message);
@@ -230,8 +234,19 @@
       }
 
       function encode() {
-        let url = `https://${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
+        // navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
+        window.open(url, "_blank");
+      }
+
+      function iframe() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
         navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
+      }
+
+      function _clear() {
+        if (confirm("Clear URL will also clear your code too!"))
+          window.location.assign(`${window.location.pathname}?dev=true`);
       }
     </script>
   </body>
