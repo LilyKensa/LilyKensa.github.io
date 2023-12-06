@@ -20,8 +20,19 @@
         --code-box-shadow: #0e0e0e;
       }
 
+      .input {
+        flex-grow: 1;
+        max-height: 60dvh;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
       .CodeMirror {
         width: 100%;
+        height: 100%;
       }
 
       .buttons {
@@ -41,14 +52,17 @@
         background: #363636;
       }
 
-      #output {
+      .output {
         display: block;
         margin: 0.2em 0;
         width: 100%;
         font-family: Consolas, "Courier New", monospace;     
-        background: #1e1e1e;   
+        background: #1e1e1e;
+        height: 40dvh;
+        min-height: 4em;
+        overflow-y: auto;
       }
-      #output > p {
+      .output > p {
         margin-top: 0;
         margin-bottom: 0.2em;
         padding: 3px;
@@ -139,10 +153,10 @@
 
     <div class="buttons">
       <div class="button" onclick="run();">Run</div>
-      <div class="button dev-only" onclick="encode();">Encode</div>
+      <div class="button dev-only" onclick="encode();">Generate iframe</div>
     </div>
 
-    <div id="output"></div>
+    <div class="output"></div>
 
     <script>
       var editor;
@@ -168,21 +182,33 @@
       });
 
       function run() {
+        document.querySelector(".output").innerHTML = "";
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(_run);
+        });
+      }
+      function _run() {
         let code = editor.getValue();
 
         // Capture standard output and error streams
         var originalConsoleLog = console.log;
         var originalConsoleError = console.error;
 
+        // for (let key of Object.keys(console)) {
+        //   if (console.hasOwnProperty(key)) {
+        //     
+        //   }
+        // }
+
         var output = "";
 
         console.log = function (message) {
-          output += message + "\n";
+          output += `<p>${message}</p>`;
           // originalConsoleLog.apply(console, arguments);
         };
 
         console.error = function (message) {
-          output += "Error: " + message + "\n";
+          output += `<p>Error: <span class="error">${message}</span></p>`;
           // originalConsoleError.apply(console, arguments);
         };
 
@@ -191,8 +217,8 @@
             eval(code);
 
             // Display the output
-            var outputDiv = document.querySelector("#output");
-            outputDiv.innerHTML += "<p>" + output + "</p>";
+            var outputDiv = document.querySelector(".output");
+            outputDiv.innerHTML += output;
         } catch (error) {
             // Handle any exceptions
             console.error("Error: " + error.message);
@@ -204,7 +230,8 @@
       }
 
       function encode() {
-        navigator.clipboard.writeText(window.location.href.split("?")[0] + "?content=" + encodeURIComponent(editor.getValue()));
+        let url = `https://${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
+        navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
       }
     </script>
   </body>
