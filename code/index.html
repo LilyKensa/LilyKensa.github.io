@@ -97,14 +97,6 @@
       :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb:active {
         background: #313131;
       }
-
-      .url {
-        min-height: fit-content; 
-        overflow: hidden;
-        font-size: 0.6em;
-        overflow: hidden;
-        white-space: nowrap;
-      }
     </style>
     <!-- Ambiance Style Overrides -->
     <style>
@@ -279,17 +271,13 @@
       <div class="button" onclick="run();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
-        const urlElement = document.querySelector('.url');
+        const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
       <div class="button dev-only" onclick="_clear();">Clear URL</div>
       <div class="button dev-only" onclick="iframe();">Copy iframe</div>
-    </div>
-
-    <div class="url">
-      
     </div>
 
     <div class="output" onscroll="handleScroll();"></div>
