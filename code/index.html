@@ -258,6 +258,12 @@
 
     <div class="buttons">
       <div class="button" onclick="run();">Run</div>
+      <div class="button dev-only" onload="
+        if (window.location.host === window.parent.location.host) 
+          this.style['display'] = 'none';
+      " onclick="
+        window.open(window.location.href, '_blank');
+      ">Open in new Tab</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
       <div class="button dev-only" onclick="_clear();">Clear URL</div>
       <div class="button dev-only" onclick="iframe();">Copy iframe</div>
