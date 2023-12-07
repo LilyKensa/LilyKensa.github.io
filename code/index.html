@@ -319,13 +319,13 @@
         //   }
         // }
 
-        console.log = function (message) {
-          write(`<p>${message}</p>`);
+        console.log = function (...messages) {
+          write(`<p>${messages.join(" ")}</p>`);
           // originalConsoleLog.apply(console, arguments);
         };
 
-        console.error = function (message) {
-          write(`<p>Error: <span class="error">${message}</span></p>`);
+        console.error = function (error) {
+          write(`<p>Error: <span class="error">${error}</span></p>`);
           // originalConsoleError.apply(console, arguments);
         };
 
