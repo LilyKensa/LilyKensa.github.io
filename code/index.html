@@ -45,6 +45,7 @@
         background: #424242;
         padding: 0.4em;
         cursor: pointer;
+        user-select: none;
       }
       .button:hover {
         background: #525252;
@@ -245,7 +246,7 @@
       <div class="button dev-only" onclick="iframe();">Copy iframe</div>
     </div>
 
-    <div class="output"></div>
+    <div class="output" onscroll="handleScroll();"></div>
 
     <script>
       var editor;
@@ -270,9 +271,10 @@
         }
       });
 
+      var outputs = [];
+
       function write(output) {
-        var outputDiv = document.querySelector(".output");
-        outputDiv.innerHTML += output;
+        outputs.push(output);
       }
 
       function run() {
@@ -333,6 +335,35 @@
       function _clear() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
+      }
+
+      function updateFrame() {
+        console.log(scrollToBottom);
+        if (outputs.length) {
+          var outputDiv = document.querySelector(".output");
+
+          // outputDiv.innerHTML += outputs.shift();
+          outputDiv.innerHTML += outputs.slice(0, 10).join("");
+          outputs.splice(0, 10);
+
+          if (scrollToBottom) {
+            outputDiv.scrollTop = outputDiv.scrollHeight;
+          }
+        }
+
+        window.requestAnimationFrame(updateFrame);
+      }
+      window.requestAnimationFrame(updateFrame);
+
+      var scrollToBottom = true;
+
+      function handleScroll() {
+        scrollToBottom = false;
+
+        var outputDiv = document.querySelector(".output");
+        if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
+          scrollToBottom = true;
+        }
       }
     </script>
   </body>
