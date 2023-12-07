@@ -271,6 +271,8 @@
       <div class="button" onclick="run();">Run</div>
       <div class="button open" onclick="
         navigator.clipboard.writeText(window.location.href);
+        this.innerHTML = 'Copied';
+        setTimeout(() => this.innerHTML = 'Copy URL', 800);
       ">Copy URL</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
       <div class="button dev-only" onclick="_clear();">Clear URL</div>
