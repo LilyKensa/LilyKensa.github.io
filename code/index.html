@@ -261,10 +261,7 @@
 
     <div class="buttons">
       <div class="button" onclick="run();">Run</div>
-      <div class="button dev-only" onload="
-        if (window.location.host === window.parent.location.host) 
-          this.style['display'] = 'none';
-      " onclick="
+      <div class="button open" onclick="
         window.open(window.location.href, '_blank');
       ">Open in new Tab</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
@@ -390,6 +387,10 @@
           scrollToBottom = true;
         }
       }
+
+      
+      if (window.location.host === window.parent.location.host) 
+        document.querySelector(".button.open").style['display'] = 'none';
     </script>
   </body>
 </html>
