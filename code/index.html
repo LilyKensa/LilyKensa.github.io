@@ -68,7 +68,7 @@
         overflow-y: auto;
         position: relative;
       }
-      .output:after {
+      .output:before {
         content: "";
         display: block;
         width: 100%;
@@ -428,7 +428,7 @@
         resize.mouse.y = ev.clientY;
 
         if (resize.mouse.pressed) {
-          resize.target.style["height"] = `${window.innerHeight - resize.mouse.y}px`;
+          resize.target.style["height"] = `${window.innerHeight - resize.mouse.y - 2}px`;
         }
       });
     </script>
