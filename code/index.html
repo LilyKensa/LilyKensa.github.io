@@ -73,6 +73,7 @@
       .CodeMirror-vscrollbar::-webkit-scrollbar, 
       .output::-webkit-scrollbar {
         background: #212121;
+        width: min(12px, 2dvw);
       }
       .CodeMirror-vscrollbar::-webkit-scrollbar-thumb, 
       .output::-webkit-scrollbar-thumb {
@@ -356,7 +357,6 @@
       }
 
       function updateFrame() {
-        console.log(scrollToBottom);
         if (outputs.length) {
           var outputDiv = document.querySelector(".output");
 
