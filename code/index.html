@@ -270,8 +270,8 @@
     <div class="buttons">
       <div class="button" onclick="run();">Run</div>
       <div class="button open" onclick="
-        window.open(window.location.href, '_blank');
-      ">Open in new tab</div>
+        navigator.clipboard.writeText(window.location.href);
+      ">Copy URL</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
       <div class="button dev-only" onclick="_clear();">Clear URL</div>
       <div class="button dev-only" onclick="iframe();">Copy iframe</div>
