@@ -23,7 +23,6 @@
 
       .input {
         flex-grow: 1;
-        max-height: 60dvh;
       }
 
       body {
@@ -67,6 +66,15 @@
         height: 40dvh;
         min-height: 4em;
         overflow-y: auto;
+        position: relative;
+      }
+      .output:after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        position: absolute;
+        cursor: ns-resize;
       }
       .output > p {
         margin-top: 0;
@@ -387,10 +395,39 @@
           scrollToBottom = true;
         }
       }
-
       
       if (window.location.host === window.parent.location.host) 
         document.querySelector(".button.open").style['display'] = 'none';
+
+      var resize = {
+        target: document.querySelector(".output"),
+        mouse: {
+          y: -1,
+          pressed: false,
+          locked: false
+        }
+      };
+
+      window.addEventListener("mousedown", () => {
+        if (Math.abs(resize.mouse.y - resize.target.offsetTop) < 10) {
+          resize.mouse.pressed = true;
+        }
+        else {
+          resize.mouse.locked = true;
+        }
+      });
+      window.addEventListener("mouseup", () => {
+        resize.mouse.pressed = false;
+        resize.mouse.locked = false;
+      });
+
+      window.addEventListener("mousemove", (ev) => {
+        resize.mouse.y = ev.clientY;
+
+        if (resize.mouse.pressed) {
+          resize.target.style["height"] = `${window.innerHeight - resize.mouse.y}px`;
+        }
+      });
     </script>
   </body>
 </html>
