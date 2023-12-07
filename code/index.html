@@ -270,13 +270,19 @@
     <div class="buttons">
       <div class="button" onclick="run();">Run</div>
       <div class="button open" onclick="
-        navigator.clipboard.writeText(window.location.href);
-        this.innerHTML = 'Copied';
-        setTimeout(() => this.innerHTML = 'Copy URL', 800);
-      ">Copy URL</div>
+        const selection = window.getSelection()
+        const urlElement = document.querySelector('.url');
+        urlElement.innerHTML = window.location.href;
+        urlElement.style['height'] = 'auto';
+        selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
+      ">Show URL</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
       <div class="button dev-only" onclick="_clear();">Clear URL</div>
       <div class="button dev-only" onclick="iframe();">Copy iframe</div>
+    </div>
+
+    <div class="url" style="height: 0px; overflow: hidden; padding: 0.2em;">
+      
     </div>
 
     <div class="output" onscroll="handleScroll();"></div>
