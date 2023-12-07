@@ -273,7 +273,6 @@
         const selection = window.getSelection()
         const urlElement = document.querySelector('.url');
         urlElement.innerHTML = window.location.href;
-        urlElement.style['height'] = 'auto';
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
       <div class="button dev-only" onclick="encode();">Generate URL</div>
@@ -281,7 +280,7 @@
       <div class="button dev-only" onclick="iframe();">Copy iframe</div>
     </div>
 
-    <div class="url" style="height: 0px; overflow: hidden; padding: 0.2em;">
+    <div class="url" style="min-height: fit-content; overflow: hidden;">
       
     </div>
 
