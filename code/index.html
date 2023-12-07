@@ -64,7 +64,7 @@
         font-family: Consolas, "Courier New", monospace;     
         background: #1e1e1e;
         height: 40dvh;
-        min-height: 4em;
+        min-height: 3.4em;
         overflow-y: auto;
         position: relative;
       }
@@ -328,7 +328,7 @@
         // }
 
         console.log = function (...messages) {
-          write(`<p>${messages.join(" ")}</p>`);
+          write(`<p>${messages.join(" ").replaceAll(/\r\n|\r|\n/g, "</p><p>")}</p>`);
           // originalConsoleLog.apply(console, arguments);
         };
 
