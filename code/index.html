@@ -29,6 +29,7 @@
       body {
         display: flex;
         flex-direction: column;
+        overflow: hidden;
       }
 
       .CodeMirror {
@@ -70,22 +71,19 @@
         padding: 3px;
       }
 
-      .CodeMirror-vscrollbar::-webkit-scrollbar, 
-      .output::-webkit-scrollbar {
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar {
         background: #212121;
         width: min(12px, 2dvw);
+        height: min(12px, 2dvh);
       }
-      .CodeMirror-vscrollbar::-webkit-scrollbar-thumb, 
-      .output::-webkit-scrollbar-thumb {
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb {
         background: #363636;
         min-height: 2em;
       }
-      .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover, 
-      .output::-webkit-scrollbar-thumb:hover {
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb:hover {
         background: #3e3e3e;
       }
-      .CodeMirror-vscrollbar::-webkit-scrollbar-thumb:active, 
-      .output::-webkit-scrollbar-thumb:active {
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb:active {
         background: #313131;
       }
     </style>
