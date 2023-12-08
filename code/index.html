@@ -333,7 +333,11 @@
         // }
 
         console.log = function (...messages) {
-          write(`<p>${messages.join(" ").replaceAll(/\r\n|\r|\n/g, "</p><p>")}</p>`);
+          write(`<p>${
+            messages.join(" ")
+              .replaceAll(/\r\n|\r|\n/g, "</p><p>")
+              .replaceAll(/ /g, "&nbsp;")
+          }</p>`);
           // originalConsoleLog.apply(console, arguments);
         };
 
