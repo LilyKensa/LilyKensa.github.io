@@ -22,6 +22,7 @@
       }
 
       .input {
+        user-select: none;
         flex-grow: 1;
         overflow: hidden;
       }
@@ -70,18 +71,21 @@
         overflow-y: auto;
         position: relative;
       }
-      .output:before {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 4px;
-        position: absolute;
-        cursor: ns-resize;
-      }
       .output > p {
         margin-top: 0;
         margin-bottom: 0.2em;
         padding: 3px;
+      }
+      
+      .resize-bar {
+        display: block;
+        width: 100%;
+        height: 6px;
+        position: relative;
+        cursor: ns-resize;
+      }
+      .resize-bar:hover {
+        background: #2e6289;
       }
 
       :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar {
@@ -270,61 +274,62 @@
     </div>
 
     <div class="buttons">
-      <div class="button" onclick="run();">Run</div>
+      <div class="button" onclick="__run__BVqSWjzGRzkANWCw__IZIg7rPZRl5lQYHH();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
         const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
-      <div class="button dev-only" onclick="encode();">Generate URL</div>
-      <div class="button dev-only" onclick="_clear();">Clear URL</div>
-      <div class="button dev-only" onclick="iframe();">Copy iframe</div>
+      <div class="button dev-only" onclick="__encode__v7BPcXQAxOFPPIV8();">Generate URL</div>
+      <div class="button dev-only" onclick="__clear__2Md0jd0rNr0x4mgo();">Clear URL</div>
+      <div class="button dev-only" onclick="__iframe__PTTFwBQoTrMRIPDF();">Copy iframe</div>
     </div>
 
-    <div class="output" onscroll="handleScroll();"></div>
+    <div class="resize-bar"></div>
+    <div class="output" onscroll="_handleScroll__4QbtZmghuWHCu11v();"></div>
 
     <script>
-      var editor;
+      var _editor__MAhmDAXTgBYPkmLe;
 
       document.addEventListener("DOMContentLoaded", function () {
-        editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        _editor__MAhmDAXTgBYPkmLe = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           mode: "javascript",
           theme: "vscode-dark" // "ambiance"
         });
 
-        var urlParams = new URLSearchParams(window.location.search);
-        const codeContent = urlParams.get("content");
-        const devMode     = urlParams.get("dev") ? true : false;
+        var _urlParams__8rk6pytg4uv0akkY = new URLSearchParams(window.location.search);
+        const _codeContent__TLbpxiScZ04abCTH = _urlParams__8rk6pytg4uv0akkY.get("content");
+        const _devMode__2OHhemgSJsdIvGLc     = _urlParams__8rk6pytg4uv0akkY.get("dev") ? true : false;
         
-        editor.setValue(codeContent ?? "// Enter your JavaScript code here...");
+        _editor__MAhmDAXTgBYPkmLe.setValue(_codeContent__TLbpxiScZ04abCTH ?? "// Enter your JavaScript code here...");
 
-        if (!devMode) {
+        if (!_devMode__2OHhemgSJsdIvGLc) {
           for (let secretElement of document.querySelectorAll(".dev-only")) {
             secretElement.style["display"] = "none";
           }
         }
       });
 
-      var outputs = [];
+      var _outputs__OxoFWgT0Gq7t1ow6 = [];
 
-      function write(output) {
-        outputs.push(output);
+      function _write__JW2ogmA3omiUuS57(output) {
+        _outputs__OxoFWgT0Gq7t1ow6.push(output);
       }
 
-      function run() {
+      function __run__BVqSWjzGRzkANWCw__IZIg7rPZRl5lQYHH() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(_run);
+          window.requestAnimationFrame(___run__BVqSWjzGRzkANWCw__IZIg7rPZRl5lQYHH);
         });
       }
-      function _run() {
-        let code = editor.getValue();
+      function ___run__BVqSWjzGRzkANWCw__IZIg7rPZRl5lQYHH() {
+        let code = _editor__MAhmDAXTgBYPkmLe.getValue();
 
         // Capture standard output and error streams
-        var originalConsoleLog = console.log;
-        var originalConsoleError = console.error;
+        var _originalConsoleLog__fxjmV20sMmMFm8av = console.log;
+        var _originalConsoleError__MFaHmsiXk6svps6J = console.error;
 
         // for (let key of Object.keys(console)) {
         //   if (console.hasOwnProperty(key)) {
@@ -333,17 +338,17 @@
         // }
 
         console.log = function (...messages) {
-          write(`<p>${
+          _write__JW2ogmA3omiUuS57(`<p>${
             messages.join(" ")
               .replaceAll(/\r\n|\r|\n/g, "</p><p>")
               .replaceAll(/ /g, "&nbsp;")
           }</p>`);
-          // originalConsoleLog.apply(console, arguments);
+          // _originalConsoleLog__fxjmV20sMmMFm8av.apply(console, arguments);
         };
 
         console.error = function (error) {
-          write(`<p>Error: <span class="error">${error}</span></p>`);
-          // originalConsoleError.apply(console, arguments);
+          _write__JW2ogmA3omiUuS57(`<p>Error: <span class="error">${error}</span></p>`);
+          // _originalConsoleError__MFaHmsiXk6svps6J.apply(console, arguments);
         };
 
         try {
@@ -356,59 +361,59 @@
         } 
         finally {
           // Restore the original console.log, console.error, and prompt
-          console.log = originalConsoleLog;
-          console.error = originalConsoleError;
+          console.log = _originalConsoleLog__fxjmV20sMmMFm8av;
+          console.error = _originalConsoleError__MFaHmsiXk6svps6J;
         }
       }
 
-      function encode() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
-        // navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __encode__v7BPcXQAxOFPPIV8() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__MAhmDAXTgBYPkmLe.getValue())}`;
+        // navigator.clipboard._write__JW2ogmA3omiUuS57Text(`<iframe allow="modal" src="${url}"></iframe>`);
         window.open(url, "_blank");
       }
 
-      function iframe() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
-        navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __iframe__PTTFwBQoTrMRIPDF() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__MAhmDAXTgBYPkmLe.getValue())}`;
+        navigator.clipboard._write__JW2ogmA3omiUuS57Text(`<iframe allow="modal" src="${url}"></iframe>`);
       }
 
-      function _clear() {
+      function __clear__2Md0jd0rNr0x4mgo() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
       }
 
-      function updateFrame() {
-        if (outputs.length) {
+      function _updateFrame__JCPjokWKvrsIrBD9() {
+        if (_outputs__OxoFWgT0Gq7t1ow6.length) {
           var outputDiv = document.querySelector(".output");
 
-          // outputDiv.innerHTML += outputs.shift();
-          outputDiv.innerHTML += outputs.slice(0, 10).join("");
-          outputs.splice(0, 10);
+          // outputDiv.innerHTML += _outputs__OxoFWgT0Gq7t1ow6.shift();
+          outputDiv.innerHTML += _outputs__OxoFWgT0Gq7t1ow6.slice(0, 10).join("");
+          _outputs__OxoFWgT0Gq7t1ow6.splice(0, 10);
 
-          if (scrollToBottom) {
+          if (_scrollToBottom__CjPfyRLpZTvger9l) {
             outputDiv.scrollTop = outputDiv.scrollHeight;
           }
         }
 
-        window.requestAnimationFrame(updateFrame);
+        window.requestAnimationFrame(_updateFrame__JCPjokWKvrsIrBD9);
       }
-      window.requestAnimationFrame(updateFrame);
+      window.requestAnimationFrame(_updateFrame__JCPjokWKvrsIrBD9);
 
-      var scrollToBottom = true;
+      var _scrollToBottom__CjPfyRLpZTvger9l = true;
 
-      function handleScroll() {
-        scrollToBottom = false;
+      function _handleScroll__4QbtZmghuWHCu11v() {
+        _scrollToBottom__CjPfyRLpZTvger9l = false;
 
         var outputDiv = document.querySelector(".output");
         if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
-          scrollToBottom = true;
+          _scrollToBottom__CjPfyRLpZTvger9l = true;
         }
       }
       
       if (window.location.host === window.parent.location.host) 
         document.querySelector(".button.open").style['display'] = 'none';
 
-      var resize = {
+      var _resizer__nATRubA8SsD9v6kh = {
         target: document.querySelector(".output"),
         mouse: {
           y: -1,
@@ -418,24 +423,35 @@
       };
 
       window.addEventListener("mousedown", () => {
-        if (Math.abs(resize.mouse.y - resize.target.offsetTop) < 10) {
-          resize.mouse.pressed = true;
+        if (Math.abs(_resizer__nATRubA8SsD9v6kh.mouse.y - _resizer__nATRubA8SsD9v6kh.target.offsetTop) < 10) {
+          _resizer__nATRubA8SsD9v6kh.mouse.pressed = true;
         }
         else {
-          resize.mouse.locked = true;
+          _resizer__nATRubA8SsD9v6kh.mouse.locked = true;
         }
       });
       window.addEventListener("mouseup", () => {
-        resize.mouse.pressed = false;
-        resize.mouse.locked = false;
+        _resizer__nATRubA8SsD9v6kh.mouse.pressed = false;
+        _resizer__nATRubA8SsD9v6kh.mouse.locked = false;
       });
 
       window.addEventListener("mousemove", (ev) => {
-        resize.mouse.y = ev.clientY;
+        window.requestAnimationFrame(() => {
+          _resizer__nATRubA8SsD9v6kh.mouse.y = ev.clientY;
 
-        if (resize.mouse.pressed) {
-          resize.target.style["height"] = `${window.innerHeight - resize.mouse.y - 2}px`;
-        }
+          if (_resizer__nATRubA8SsD9v6kh.mouse.pressed) {
+            ev.preventDefault();
+
+            _resizer__nATRubA8SsD9v6kh.target.style["height"] = `${window.innerHeight - _resizer__nATRubA8SsD9v6kh.mouse.y - 12}px`;
+
+            document.body.style.cursor = "ns-resize";
+            document.querySelector(".resize-bar").style.background = "#2e6289";
+          }
+          else {
+            document.body.style.cursor = null;
+            document.querySelector(".resize-bar").style.background = null;
+          }
+        });
       });
     </script>
   </body>
