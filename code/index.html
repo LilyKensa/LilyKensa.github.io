@@ -276,66 +276,66 @@
     </div>
 
     <div class="buttons">
-      <div class="button" onclick="__run__77ppbjDv041wV78q__bBjsWBy6GnEulO9h();">Run</div>
+      <div class="button" onclick="_run__C9xwJfVleyXL9fUO();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
         const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
-      <div class="button dev-only" onclick="__encode__BhiLPj0soH6caHzf();">Generate URL</div>
-      <div class="button dev-only" onclick="__clear__8KTZO3MAuhMjeLGF();">Clear URL</div>
-      <div class="button dev-only" onclick="__iframe__MWBVa3BRZXI5DMk5();">Copy iframe</div>
+      <div class="button dev-only" onclick="__encode__1OST3M27iQYgGY0W();">Generate URL</div>
+      <div class="button dev-only" onclick="__clear__zlGXKLM0Mjd8yoKl();">Clear URL</div>
+      <div class="button dev-only" onclick="__iframe__QmwIQGZUJjJ6VGEy();">Copy iframe</div>
     </div>
 
     <div class="resize-bar"></div>
-    <div class="output" onscroll="_handleScroll__jqkjfi87rmxBeMqq();"></div>
+    <div class="output" onscroll="_handleScroll__8ENxZKBS8DehNXhn();"></div>
 
     <script>
-      var _editor__McCEXii8UsebAw4w;
+      var _editor__E7YbiZzSTwMgIrJk;
 
       document.addEventListener("DOMContentLoaded", function () {
-        _editor__McCEXii8UsebAw4w = CodeMirror.fromTextArea(document.getElementById("code"), {
+        _editor__E7YbiZzSTwMgIrJk = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           mode: "javascript",
           theme: "vscode-dark" // "ambiance"
         });
 
-        var _urlParams__VflJckodAvbleSW3 = new URLSearchParams(window.location.search);
-        const _codeContent__HWfEPsmaN8nBsYgG = _urlParams__VflJckodAvbleSW3.get("content");
-        const _devMode__chISN8bXJUSJs3Qz     = _urlParams__VflJckodAvbleSW3.get("dev") ? true : false;
+        var _urlParams__3t5AghzXbrXZIyIe = new URLSearchParams(window.location.search);
+        const _codeContent__2EzFyhrS5sro9SkI = _urlParams__3t5AghzXbrXZIyIe.get("content");
+        const _devMode__rYtcrZKGbI4m8l7p     = _urlParams__3t5AghzXbrXZIyIe.get("dev") ? true : false;
         
-        _editor__McCEXii8UsebAw4w.setValue(_codeContent__HWfEPsmaN8nBsYgG ?? "// Enter your JavaScript code here...");
+        _editor__E7YbiZzSTwMgIrJk.setValue(_codeContent__2EzFyhrS5sro9SkI ?? "// Enter your JavaScript code here...");
 
-        if (!_devMode__chISN8bXJUSJs3Qz) {
+        if (!_devMode__rYtcrZKGbI4m8l7p) {
           for (let secretElement of document.querySelectorAll(".dev-only")) {
             secretElement.style["display"] = "none";
           }
         }
       });
 
-      var _outputs__p34Eh2JNfRVhhuQS = [];
+      var _outputs__gA9cwdbqtZ7vkI39 = [];
 
-      function _write__ekA6HWhkyyghNxl7(output) {
-        _outputs__p34Eh2JNfRVhhuQS.push(
+      function _write__g5BKxumwzP9Pjq6e(output) {
+        _outputs__gA9cwdbqtZ7vkI39.push(
           output
             .replaceAll(/\r\n|\r|\n/g, "</p><p>")
             .replaceAll(/ /g, "&nbsp;")
         );
       }
 
-      function __run__77ppbjDv041wV78q__bBjsWBy6GnEulO9h() {
+      function _run__C9xwJfVleyXL9fUO() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(___run__77ppbjDv041wV78q__bBjsWBy6GnEulO9h);
+          window.requestAnimationFrame(___run__C9xwJfVleyXL9fUO__Le2bRjbogfKN3wHW);
         });
       }
-      function ___run__77ppbjDv041wV78q__bBjsWBy6GnEulO9h() {
-        let code = _editor__McCEXii8UsebAw4w.getValue();
+      function ___run__C9xwJfVleyXL9fUO__Le2bRjbogfKN3wHW() {
+        let code = _editor__E7YbiZzSTwMgIrJk.getValue();
 
         // Capture standard output and error streams
-        var _originalConsoleLog__ikFpU3Uo8QzPzdce = console.log;
-        var _originalConsoleError__H44HEx5XmdAIoE6t = console.error;
+        var _originalConsoleLog__mdpJxK3hzQePfsjb = console.log;
+        var _originalConsoleError__ltd0xEKcFnoTM0op = console.error;
 
         // for (let key of Object.keys(console)) {
         //   if (console.hasOwnProperty(key)) {
@@ -344,13 +344,13 @@
         // }
 
         console.log = function (...messages) {
-          _write__ekA6HWhkyyghNxl7(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
-          // _originalConsoleLog__ikFpU3Uo8QzPzdce.apply(console, arguments);
+          _write__g5BKxumwzP9Pjq6e(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          // _originalConsoleLog__mdpJxK3hzQePfsjb.apply(console, arguments);
         };
 
         console.error = function (error) {
-          _write__ekA6HWhkyyghNxl7(`<p>Error: <span class="error">${error}</span></p>`);
-          // _originalConsoleError__H44HEx5XmdAIoE6t.apply(console, arguments);
+          _write__g5BKxumwzP9Pjq6e(`<p>Error: <span class="error">${error}</span></p>`);
+          // _originalConsoleError__ltd0xEKcFnoTM0op.apply(console, arguments);
         };
 
         try {
@@ -363,59 +363,59 @@
         } 
         finally {
           // Restore the original console.log, console.error, and prompt
-          console.log = _originalConsoleLog__ikFpU3Uo8QzPzdce;
-          console.error = _originalConsoleError__H44HEx5XmdAIoE6t;
+          console.log = _originalConsoleLog__mdpJxK3hzQePfsjb;
+          console.error = _originalConsoleError__ltd0xEKcFnoTM0op;
         }
       }
 
-      function __encode__BhiLPj0soH6caHzf() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__McCEXii8UsebAw4w.getValue())}`;
-        // navigator.clipboard._write__ekA6HWhkyyghNxl7Text(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __encode__1OST3M27iQYgGY0W() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__E7YbiZzSTwMgIrJk.getValue())}`;
+        // navigator.clipboard._write__g5BKxumwzP9Pjq6eText(`<iframe allow="modal" src="${url}"></iframe>`);
         window.open(url, "_blank");
       }
 
-      function __iframe__MWBVa3BRZXI5DMk5() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__McCEXii8UsebAw4w.getValue())}`;
-        navigator.clipboard._write__ekA6HWhkyyghNxl7Text(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __iframe__QmwIQGZUJjJ6VGEy() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__E7YbiZzSTwMgIrJk.getValue())}`;
+        navigator.clipboard._write__g5BKxumwzP9Pjq6eText(`<iframe allow="modal" src="${url}"></iframe>`);
       }
 
-      function __clear__8KTZO3MAuhMjeLGF() {
+      function __clear__zlGXKLM0Mjd8yoKl() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
       }
 
-      function _updateFrame__TNQHYS36EOd0IuKq() {
-        if (_outputs__p34Eh2JNfRVhhuQS.length) {
+      function _updateFrame__srfqe4QD3KhxIujV() {
+        if (_outputs__gA9cwdbqtZ7vkI39.length) {
           var outputDiv = document.querySelector(".output");
 
-          // outputDiv.innerHTML += _outputs__p34Eh2JNfRVhhuQS.shift();
-          outputDiv.innerHTML += _outputs__p34Eh2JNfRVhhuQS.slice(0, 10).join("");
-          _outputs__p34Eh2JNfRVhhuQS.splice(0, 10);
+          // outputDiv.innerHTML += _outputs__gA9cwdbqtZ7vkI39.shift();
+          outputDiv.innerHTML += _outputs__gA9cwdbqtZ7vkI39.slice(0, 10).join("");
+          _outputs__gA9cwdbqtZ7vkI39.splice(0, 10);
 
-          if (_scrollToBottom__t2biwqPCRI3zWssO) {
+          if (_scrollToBottom__3oy49IkLO2lFo1h3) {
             outputDiv.scrollTop = outputDiv.scrollHeight;
           }
         }
 
-        window.requestAnimationFrame(_updateFrame__TNQHYS36EOd0IuKq);
+        window.requestAnimationFrame(_updateFrame__srfqe4QD3KhxIujV);
       }
-      window.requestAnimationFrame(_updateFrame__TNQHYS36EOd0IuKq);
+      window.requestAnimationFrame(_updateFrame__srfqe4QD3KhxIujV);
 
-      var _scrollToBottom__t2biwqPCRI3zWssO = true;
+      var _scrollToBottom__3oy49IkLO2lFo1h3 = true;
 
-      function _handleScroll__jqkjfi87rmxBeMqq() {
-        _scrollToBottom__t2biwqPCRI3zWssO = false;
+      function _handleScroll__8ENxZKBS8DehNXhn() {
+        _scrollToBottom__3oy49IkLO2lFo1h3 = false;
 
         var outputDiv = document.querySelector(".output");
         if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
-          _scrollToBottom__t2biwqPCRI3zWssO = true;
+          _scrollToBottom__3oy49IkLO2lFo1h3 = true;
         }
       }
       
       if (window.location.host === window.parent.location.host) 
         document.querySelector(".button.open").style['display'] = 'none';
 
-      var _resizer__TVKXZOdeeEVB1vGq = {
+      var _resizer__Mp4Gvom03J92Grdy = {
         target: document.querySelector(".output"),
         mouse: {
           y: -1,
@@ -425,26 +425,26 @@
       };
 
       window.addEventListener("mousedown", () => {
-        if (Math.abs(_resizer__TVKXZOdeeEVB1vGq.mouse.y - _resizer__TVKXZOdeeEVB1vGq.target.offsetTop) < 10) {
-          _resizer__TVKXZOdeeEVB1vGq.mouse.pressed = true;
+        if (Math.abs(_resizer__Mp4Gvom03J92Grdy.mouse.y - _resizer__Mp4Gvom03J92Grdy.target.offsetTop) < 10) {
+          _resizer__Mp4Gvom03J92Grdy.mouse.pressed = true;
         }
         else {
-          _resizer__TVKXZOdeeEVB1vGq.mouse.locked = true;
+          _resizer__Mp4Gvom03J92Grdy.mouse.locked = true;
         }
       });
       window.addEventListener("mouseup", () => {
-        _resizer__TVKXZOdeeEVB1vGq.mouse.pressed = false;
-        _resizer__TVKXZOdeeEVB1vGq.mouse.locked = false;
+        _resizer__Mp4Gvom03J92Grdy.mouse.pressed = false;
+        _resizer__Mp4Gvom03J92Grdy.mouse.locked = false;
       });
 
       window.addEventListener("mousemove", (ev) => {
         window.requestAnimationFrame(() => {
-          _resizer__TVKXZOdeeEVB1vGq.mouse.y = ev.clientY;
+          _resizer__Mp4Gvom03J92Grdy.mouse.y = ev.clientY;
 
-          if (_resizer__TVKXZOdeeEVB1vGq.mouse.pressed) {
+          if (_resizer__Mp4Gvom03J92Grdy.mouse.pressed) {
             ev.preventDefault();
 
-            _resizer__TVKXZOdeeEVB1vGq.target.style["height"] = `${window.innerHeight - _resizer__TVKXZOdeeEVB1vGq.mouse.y - 12}px`;
+            _resizer__Mp4Gvom03J92Grdy.target.style["height"] = `${window.innerHeight - _resizer__Mp4Gvom03J92Grdy.mouse.y - 12}px`;
 
             document.body.style.cursor = "ns-resize";
             document.querySelector(".resize-bar").style.background = "#2e6289";
