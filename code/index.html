@@ -276,66 +276,66 @@
     </div>
 
     <div class="buttons">
-      <div class="button" onclick="_run__eyRzk3ssn9CMxWrm();">Run</div>
+      <div class="button" onclick="_run__BIKSSVBOV7G9JqxT();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
         const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
-      <div class="button dev-only" onclick="__encode__NN61gI3KGdh4OwRR();">Generate URL</div>
-      <div class="button dev-only" onclick="__clear__qI657I63e9aefPQi();">Clear URL</div>
-      <div class="button dev-only" onclick="__iframe__i5yCZSoIjdkpyXap();">Copy iframe</div>
+      <div class="button dev-only" onclick="__encode__qfbinlXLGXyDNyid();">Generate URL</div>
+      <div class="button dev-only" onclick="__clear__vMCZUC5ZwE2bhhQ6();">Clear URL</div>
+      <div class="button dev-only" onclick="__iframe__9j2XoUFmDPLnWjtN();">Copy iframe</div>
     </div>
 
     <div class="resize-bar"></div>
-    <div class="output" onscroll="_handleScroll__VethhX0FcJDXuOqC();"></div>
+    <div class="output" onscroll="_handleScroll__zO2427ED75hGZF45();"></div>
 
     <script>
-      var _editor__qy0vYSXsepvumQCV;
+      var _editor__SNwVLrlXhjDvjUdT;
 
       document.addEventListener("DOMContentLoaded", function () {
-        _editor__qy0vYSXsepvumQCV = CodeMirror.fromTextArea(document.getElementById("code"), {
+        _editor__SNwVLrlXhjDvjUdT = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           mode: "javascript",
           theme: "vscode-dark" // "ambiance"
         });
 
-        var _urlParams__YhX8bJTuWOElUupG = new URLSearchParams(window.location.search);
-        const _codeContent__BIp8U7IxXyQkSrtH = _urlParams__YhX8bJTuWOElUupG.get("content");
-        const _devMode__DEwqWiviRk88PKk0     = _urlParams__YhX8bJTuWOElUupG.get("dev") ? true : false;
+        var _urlParams__kTVSg2dIq1YUrLyx = new URLSearchParams(window.location.search);
+        const _codeContent__fhU2m2Czg4P5xZ0z = _urlParams__kTVSg2dIq1YUrLyx.get("content");
+        const _devMode__jRcePRX6f4gSnO4f     = _urlParams__kTVSg2dIq1YUrLyx.get("dev") ? true : false;
         
-        _editor__qy0vYSXsepvumQCV.setValue(_codeContent__BIp8U7IxXyQkSrtH ?? "// Enter your JavaScript code here...");
+        _editor__SNwVLrlXhjDvjUdT.setValue(_codeContent__fhU2m2Czg4P5xZ0z ?? "// Enter your JavaScript code here...");
 
-        if (!_devMode__DEwqWiviRk88PKk0) {
+        if (!_devMode__jRcePRX6f4gSnO4f) {
           for (let secretElement of document.querySelectorAll(".dev-only")) {
             secretElement.style["display"] = "none";
           }
         }
       });
 
-      var _outputs__LUsIZ2HK9j37BCBJ = [];
+      var _outputs__LDXSnMn01QPFF968 = [];
 
-      function _write__pllK9ZPk5GGPq6Hb(output) {
-        _outputs__LUsIZ2HK9j37BCBJ.push(
+      function _write__LrLdWl1k64053NAz(output) {
+        _outputs__LDXSnMn01QPFF968.push(
           output
             .replaceAll(/\r\n|\r|\n/g, "</p><p>")
             .replaceAll(/ /g, "&nbsp;")
         );
       }
 
-      function _run__eyRzk3ssn9CMxWrm() {
+      function _run__BIKSSVBOV7G9JqxT() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(___run__eyRzk3ssn9CMxWrm__ijlknfveWYnSmlht);
+          window.requestAnimationFrame(___run__BIKSSVBOV7G9JqxT__oV6f8VsGulePVVur);
         });
       }
-      function ___run__eyRzk3ssn9CMxWrm__ijlknfveWYnSmlht() {
-        let code = _editor__qy0vYSXsepvumQCV.getValue();
+      function ___run__BIKSSVBOV7G9JqxT__oV6f8VsGulePVVur() {
+        let code = _editor__SNwVLrlXhjDvjUdT.getValue();
 
         // Capture standard output and error streams
-        var _originalConsoleLog__KhwJ6p1Za3xTy6Pv = console.log;
-        var _originalConsoleError__XFtiI2q7IDbHQCwK = console.error;
+        var _originalConsoleLog__mrC1OqQZhWsKo073 = console.log;
+        var _originalConsoleError__DYdDUCwDseZuTJ19 = console.error;
 
         // for (let key of Object.keys(console)) {
         //   if (console.hasOwnProperty(key)) {
@@ -344,13 +344,13 @@
         // }
 
         console.log = function (...messages) {
-          _write__pllK9ZPk5GGPq6Hb(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
-          // _originalConsoleLog__KhwJ6p1Za3xTy6Pv.apply(console, arguments);
+          _write__LrLdWl1k64053NAz(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          // _originalConsoleLog__mrC1OqQZhWsKo073.apply(console, arguments);
         };
 
         console.error = function (error) {
-          _write__pllK9ZPk5GGPq6Hb(`<p>Error: <span class="error">${error}</span></p>`);
-          // _originalConsoleError__XFtiI2q7IDbHQCwK.apply(console, arguments);
+          _write__LrLdWl1k64053NAz(`<p>Error: <span class="error">${error}</span></p>`);
+          // _originalConsoleError__DYdDUCwDseZuTJ19.apply(console, arguments);
         };
 
         try {
@@ -363,52 +363,52 @@
         } 
         finally {
           // Restore the original console.log, console.error, and prompt
-          console.log = _originalConsoleLog__KhwJ6p1Za3xTy6Pv;
-          console.error = _originalConsoleError__XFtiI2q7IDbHQCwK;
+          console.log = _originalConsoleLog__mrC1OqQZhWsKo073;
+          console.error = _originalConsoleError__DYdDUCwDseZuTJ19;
         }
       }
 
-      function __encode__NN61gI3KGdh4OwRR() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__qy0vYSXsepvumQCV.getValue())}`;
-        // navigator.clipboard._write__pllK9ZPk5GGPq6HbText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __encode__qfbinlXLGXyDNyid() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__SNwVLrlXhjDvjUdT.getValue())}`;
+        // navigator.clipboard._write__LrLdWl1k64053NAzText(`<iframe allow="modal" src="${url}"></iframe>`);
         window.open(url, "_blank");
       }
 
-      function __iframe__i5yCZSoIjdkpyXap() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__qy0vYSXsepvumQCV.getValue())}`;
-        navigator.clipboard._write__pllK9ZPk5GGPq6HbText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __iframe__9j2XoUFmDPLnWjtN() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__SNwVLrlXhjDvjUdT.getValue())}`;
+        navigator.clipboard._write__LrLdWl1k64053NAzText(`<iframe allow="modal" src="${url}"></iframe>`);
       }
 
-      function __clear__qI657I63e9aefPQi() {
+      function __clear__vMCZUC5ZwE2bhhQ6() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
       }
 
-      function _updateFrame__oyE1Kf0ZBlb2umKe() {
-        if (_outputs__LUsIZ2HK9j37BCBJ.length) {
+      function _updateFrame__YUSc2I4zP6E0BkWX() {
+        if (_outputs__LDXSnMn01QPFF968.length) {
           var outputDiv = document.querySelector(".output");
 
-          // outputDiv.innerHTML += _outputs__LUsIZ2HK9j37BCBJ.shift();
-          outputDiv.innerHTML += _outputs__LUsIZ2HK9j37BCBJ.slice(0, 10).join("");
-          _outputs__LUsIZ2HK9j37BCBJ.splice(0, 10);
+          // outputDiv.innerHTML += _outputs__LDXSnMn01QPFF968.shift();
+          outputDiv.innerHTML += _outputs__LDXSnMn01QPFF968.slice(0, 10).join("");
+          _outputs__LDXSnMn01QPFF968.splice(0, 10);
 
-          if (_scrollToBottom__fKs0EDMlgbYLmrcr) {
+          if (_scrollToBottom__TfIMwjH6ZbpGADPX) {
             outputDiv.scrollTop = outputDiv.scrollHeight;
           }
         }
 
-        window.requestAnimationFrame(_updateFrame__oyE1Kf0ZBlb2umKe);
+        window.requestAnimationFrame(_updateFrame__YUSc2I4zP6E0BkWX);
       }
-      window.requestAnimationFrame(_updateFrame__oyE1Kf0ZBlb2umKe);
+      window.requestAnimationFrame(_updateFrame__YUSc2I4zP6E0BkWX);
 
-      var _scrollToBottom__fKs0EDMlgbYLmrcr = true;
+      var _scrollToBottom__TfIMwjH6ZbpGADPX = true;
 
-      function _handleScroll__VethhX0FcJDXuOqC() {
-        _scrollToBottom__fKs0EDMlgbYLmrcr = false;
+      function _handleScroll__zO2427ED75hGZF45() {
+        _scrollToBottom__TfIMwjH6ZbpGADPX = false;
 
         var outputDiv = document.querySelector(".output");
         if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
-          _scrollToBottom__fKs0EDMlgbYLmrcr = true;
+          _scrollToBottom__TfIMwjH6ZbpGADPX = true;
         }
       }
       
@@ -421,7 +421,7 @@
         document.querySelector(".output").style.height = "4em";
       }
 
-      var _resizer__Zp9wSKDUEOwtsDbV = {
+      var _resizer__s4GYLnrAgRdScxjO = {
         target: document.querySelector(".output"),
         mouse: {
           y: -1,
@@ -431,26 +431,26 @@
       };
 
       window.addEventListener("mousedown", () => {
-        if (Math.abs(_resizer__Zp9wSKDUEOwtsDbV.mouse.y - _resizer__Zp9wSKDUEOwtsDbV.target.offsetTop) < 10) {
-          _resizer__Zp9wSKDUEOwtsDbV.mouse.pressed = true;
+        if (Math.abs(_resizer__s4GYLnrAgRdScxjO.mouse.y - _resizer__s4GYLnrAgRdScxjO.target.offsetTop) < 10) {
+          _resizer__s4GYLnrAgRdScxjO.mouse.pressed = true;
         }
         else {
-          _resizer__Zp9wSKDUEOwtsDbV.mouse.locked = true;
+          _resizer__s4GYLnrAgRdScxjO.mouse.locked = true;
         }
       });
       window.addEventListener("mouseup", () => {
-        _resizer__Zp9wSKDUEOwtsDbV.mouse.pressed = false;
-        _resizer__Zp9wSKDUEOwtsDbV.mouse.locked = false;
+        _resizer__s4GYLnrAgRdScxjO.mouse.pressed = false;
+        _resizer__s4GYLnrAgRdScxjO.mouse.locked = false;
       });
 
       window.addEventListener("mousemove", (ev) => {
         window.requestAnimationFrame(() => {
-          _resizer__Zp9wSKDUEOwtsDbV.mouse.y = ev.clientY;
+          _resizer__s4GYLnrAgRdScxjO.mouse.y = ev.clientY;
 
-          if (_resizer__Zp9wSKDUEOwtsDbV.mouse.pressed) {
+          if (_resizer__s4GYLnrAgRdScxjO.mouse.pressed) {
             ev.preventDefault();
 
-            _resizer__Zp9wSKDUEOwtsDbV.target.style["height"] = `${window.innerHeight - _resizer__Zp9wSKDUEOwtsDbV.mouse.y - 12}px`;
+            _resizer__s4GYLnrAgRdScxjO.target.style["height"] = `${window.innerHeight - _resizer__s4GYLnrAgRdScxjO.mouse.y - 12}px`;
 
             document.body.style.cursor = "ns-resize";
             document.querySelector(".resize-bar").style.background = "#2e6289";
@@ -461,6 +461,515 @@
           }
         });
       });
+
+      function _handleResize__YF4UIv620dHwo1RV() {
+        let heightOfInput = document.querySelector(".CodeMirror-sizer").clientHeight;
+        let {
+          top: topOfButtons,
+          height: heightOfButtons
+        } = document.querySelector(".buttons").getBoundingClientRect();
+
+        console.log(heightOfInput - topOfButtons)
+
+        if (heightOfInput - topOfButtons > 1) {
+          let outputDiv = document.querySelector(".output");
+          outputDiv.style.height = `${window.innerHeight - heightOfInput - heightOfButtons}px`;
+        }
+      }
+
+      window.addEventListener("resize", _handleResize__YF4UIv620dHwo1RV);
+      window.requestAnimationFrame(_handleResize__YF4UIv620dHwo1RV);
     </script>
   </body>
 </html>
+<!--
+
+ORIGINAL HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/ambiance.min.css" integrity="sha512-wVrMpCao81zIdzAM+fYyuF6BoUXjDO8le2mQXl4iVezdDSgZOCFtpm/AL3LZn9dqc3e4CloZfiZxhTp5UNpWIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <title>JavaScript Code Runner</title>
+  </head>
+  <body>
+    <!- - Main Style - ->
+    <style>
+      html, body {
+        width: 100dvw;
+        height: 100dvh;
+        margin: 0;
+        padding: 0;
+        background: #202020;
+        color: #eee;
+        --code-box-shadow: #0e0e0e;
+      }
+
+      .input {
+        user-select: none;
+        flex-grow: 1;
+        overflow: hidden;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .CodeMirror {
+        width: 100%;
+        height: 100%;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        font-size: 0.8em;
+        margin: 0.2em;
+        background: #424242;
+        padding: 0.3em;
+        cursor: pointer;
+        user-select: none;
+        width: max-content;
+        white-space: nowrap;
+      }
+      .button:hover {
+        background: #525252;
+      }
+      .button:active {
+        background: #363636;
+      }
+
+      .output {
+        display: block;
+        margin: 0.2em 0;
+        width: 100%;
+        font-family: Consolas, "Courier New", monospace;     
+        background: #1e1e1e;
+        height: 40dvh;
+        min-height: 1.5em;
+        overflow-y: auto;
+        position: relative;
+      }
+      .output > p {
+        margin-top: 0;
+        margin-bottom: 0.2em;
+        padding: 1px 3px;
+      }
+      
+      .resize-bar {
+        display: block;
+        width: 100%;
+        height: 6px;
+        position: relative;
+        cursor: ns-resize;
+      }
+      .resize-bar:hover {
+        background: #2e6289;
+      }
+
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar {
+        background: #212121;
+        width: min(12px, 3dvw);
+        height: min(12px, 3dvw);
+      }
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb {
+        background: #363636;
+        min-height: min(20%, 1.5em);
+      }
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb:hover {
+        background: #3e3e3e;
+      }
+      :is(.CodeMirror-vscrollbar, .CodeMirror-hscrollbar, .output)::-webkit-scrollbar-thumb:active {
+        background: #313131;
+      }
+    </style>
+    <!- - Ambiance Style Overrides - ->
+    <style>
+      .cm-s-ambiance.CodeMirror {
+        color: #e6e1dc;
+        background-color: #202020;
+        box-shadow: inset 0 0 10px var(--code-box-shadow);
+      }
+
+      .cm-s-ambiance .CodeMirror-gutters {
+        background: #252425;
+        border-right: 1px solid #4d4d4d;
+        box-shadow: 0 10px 20px var(--code-box-shadow);
+      }
+
+      .cm-s-ambiance .CodeMirror-linenumber {
+        text-shadow: 0 1px 1px #4d4d4d;
+        color: #aaaaaa;
+        padding: 0 5px;
+      } 
+
+      .cm-s-ambiance .cm-operator {
+        color: #eb5a25;
+      }
+
+      .cm-s-ambiance .cm-comment {
+        color: #9d9d9d;
+      }
+    </style>
+    <!- - VSCode Style - ->
+    <style>
+      /**
+       *	@package    vscode-dark theme
+       *	@version    1.0.0
+       *	@author		  Inter-Net PRO
+       *	@link       https://inter-net.pro
+       *	@github     https://github.com/Inter-Net-Pro/Theme-VSCode-Dark
+       */
+      
+      .cm-s-vscode-dark span.cm-meta {
+        color: #569cd6
+      }
+
+      .cm-s-vscode-dark span.cm-number {
+        color: #b5cea8
+      }
+
+      .cm-s-vscode-dark span.cm-keyword {
+        line-height: 1em;
+        font-weight: bold;
+        color: #569cd6;
+      }
+
+      .cm-s-vscode-dark span.cm-def {
+        color: #9cdcfe
+      }
+
+      .cm-s-vscode-dark span.cm-variable {
+        color: #ddd6a3
+      }
+
+      .cm-s-vscode-dark span.cm-variable-2 {
+        color: #9cdcfe
+      }
+
+      .cm-s-vscode-dark span.cm-variable-3,
+      .cm-s-vscode-dark span.cm-type {
+        color: #A9B7C6
+      }
+
+      .cm-s-vscode-dark span.cm-property {
+        color: #9cdcfe
+      }
+
+      .cm-s-vscode-dark span.cm-operator {
+        color: #d4d4d4
+      }
+
+      .cm-s-vscode-dark span.cm-string {
+        color: #ce9178
+      }
+
+      .cm-s-vscode-dark span.cm-string-2 {
+        color: #6A8759
+      }
+
+      .cm-s-vscode-dark span.cm-comment {
+        color: #6A9955
+      }
+
+      .cm-s-vscode-dark span.cm-link {
+        color: #287BDE
+      }
+
+      .cm-s-vscode-dark span.cm-atom {
+        color: #569cd6
+      }
+
+      .cm-s-vscode-dark span.cm-error {
+        color: #BC3F3C
+      }
+
+      .cm-s-vscode-dark span.cm-tag {
+        color: #569cd6
+      }
+
+      .cm-s-vscode-dark span.cm-attribute {
+        color: #9cdcfe
+      }
+
+      .cm-s-vscode-dark span.cm-qualifier {
+        color: #d7ba7d
+      }
+
+      .cm-s-vscode-dark span.cm-bracket {
+        color: #808080
+      }
+
+      .cm-s-vscode-dark.CodeMirror {
+        background: #1e1e1e;
+        color: #e9e9e9;
+      }
+
+      .cm-s-vscode-dark .CodeMirror-cursor {
+        border-left: 1px solid #bebebe;
+      }
+
+      .CodeMirror-activeline-background {
+        background: #3A3A3A;
+      }
+
+      .cm-s-vscode-dark div.CodeMirror-selected {
+        background: #1e496c
+      }
+
+      .cm-s-vscode-dark .CodeMirror-gutters {
+        background: #252526;
+        border-right: 1px solid grey;
+        color: #606366
+      }
+
+      .cm-s-vscode-dark span.cm-builtin {
+        color: #A9B7C6;
+      }
+
+      .cm-s-vscode-dark {
+        font-family: Consolas, "Courier New", monospace, serif;
+      }
+
+      .cm-s-vscode-dark .CodeMirror-matchingbracket {
+        background-color: #3b514d;
+        color: yellow !important;
+      }
+
+      .CodeMirror-hints.vscode-dark {
+        font-family: Consolas, "Courier New", monospace;
+        color: #9c9e9e;
+        background-color: #3b3e3f !important;
+      }
+
+      .CodeMirror-hints.vscode-dark .CodeMirror-hint-active {
+        background-color: #494d4e !important;
+        color: #9c9e9e !important;
+      }
+    </style>
+
+    <div class="input">
+      <textarea id="code"></textarea>
+    </div>
+
+    <div class="buttons">
+      <div class="button" onclick="run();">Run</div>
+      <div class="button open" onclick="
+        const selection = window.getSelection()
+        const urlElement = document.querySelector('.output');
+        urlElement.innerHTML = window.location.href;
+        selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
+      ">Show URL</div>
+      <div class="button dev-only" onclick="_encode();">Generate URL</div>
+      <div class="button dev-only" onclick="_clear();">Clear URL</div>
+      <div class="button dev-only" onclick="_iframe();">Copy iframe</div>
+    </div>
+
+    <div class="resize-bar"></div>
+    <div class="output" onscroll="handleScroll();"></div>
+
+    <script>
+      var editor;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+          lineNumbers: true,
+          mode: "javascript",
+          theme: "vscode-dark" // "ambiance"
+        });
+
+        var urlParams = new URLSearchParams(window.location.search);
+        const codeContent = urlParams.get("content");
+        const devMode     = urlParams.get("dev") ? true : false;
+        
+        editor.setValue(codeContent ?? "// Enter your JavaScript code here...");
+
+        if (!devMode) {
+          for (let secretElement of document.querySelectorAll(".dev-only")) {
+            secretElement.style["display"] = "none";
+          }
+        }
+      });
+
+      var outputs = [];
+
+      function write(output) {
+        outputs.push(
+          output
+            .replaceAll(/\r\n|\r|\n/g, "</p><p>")
+            .replaceAll(/ /g, "&nbsp;")
+        );
+      }
+
+      function run() {
+        document.querySelector(".output").innerHTML = "";
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(_run);
+        });
+      }
+      function _run() {
+        let code = editor.getValue();
+
+        // Capture standard output and error streams
+        var originalConsoleLog = console.log;
+        var originalConsoleError = console.error;
+
+        // for (let key of Object.keys(console)) {
+        //   if (console.hasOwnProperty(key)) {
+        //     
+        //   }
+        // }
+
+        console.log = function (...messages) {
+          write(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          // originalConsoleLog.apply(console, arguments);
+        };
+
+        console.error = function (error) {
+          write(`<p>Error: <span class="error">${error}</span></p>`);
+          // originalConsoleError.apply(console, arguments);
+        };
+
+        try {
+          // Run the code
+          eval(code);
+        } 
+        catch (error) {
+          // Handle any exceptions
+          console.error(error.message);
+        } 
+        finally {
+          // Restore the original console.log, console.error, and prompt
+          console.log = originalConsoleLog;
+          console.error = originalConsoleError;
+        }
+      }
+
+      function _encode() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
+        // navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
+        window.open(url, "_blank");
+      }
+
+      function _iframe() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(editor.getValue())}`;
+        navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
+      }
+
+      function _clear() {
+        if (confirm("Clear URL will also clear your code too!"))
+          window.location.assign(`${window.location.pathname}?dev=true`);
+      }
+
+      function updateFrame() {
+        if (outputs.length) {
+          var outputDiv = document.querySelector(".output");
+
+          // outputDiv.innerHTML += outputs.shift();
+          outputDiv.innerHTML += outputs.slice(0, 10).join("");
+          outputs.splice(0, 10);
+
+          if (scrollToBottom) {
+            outputDiv.scrollTop = outputDiv.scrollHeight;
+          }
+        }
+
+        window.requestAnimationFrame(updateFrame);
+      }
+      window.requestAnimationFrame(updateFrame);
+
+      var scrollToBottom = true;
+
+      function handleScroll() {
+        scrollToBottom = false;
+
+        var outputDiv = document.querySelector(".output");
+        if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
+          scrollToBottom = true;
+        }
+      }
+      
+      try {
+        if (window.location.host === window.parent.location.host)  {
+          document.querySelector(".button.open").style['display'] = 'none';
+        }
+      }
+      catch (err) {
+        document.querySelector(".output").style.height = "4em";
+      }
+
+      var resizer = {
+        target: document.querySelector(".output"),
+        mouse: {
+          y: -1,
+          pressed: false,
+          locked: false
+        }
+      };
+
+      window.addEventListener("mousedown", () => {
+        if (Math.abs(resizer.mouse.y - resizer.target.offsetTop) < 10) {
+          resizer.mouse.pressed = true;
+        }
+        else {
+          resizer.mouse.locked = true;
+        }
+      });
+      window.addEventListener("mouseup", () => {
+        resizer.mouse.pressed = false;
+        resizer.mouse.locked = false;
+      });
+
+      window.addEventListener("mousemove", (ev) => {
+        window.requestAnimationFrame(() => {
+          resizer.mouse.y = ev.clientY;
+
+          if (resizer.mouse.pressed) {
+            ev.preventDefault();
+
+            resizer.target.style["height"] = `${window.innerHeight - resizer.mouse.y - 12}px`;
+
+            document.body.style.cursor = "ns-resize";
+            document.querySelector(".resize-bar").style.background = "#2e6289";
+          }
+          else {
+            document.body.style.cursor = null;
+            document.querySelector(".resize-bar").style.background = null;
+          }
+        });
+      });
+
+      function handleResize() {
+        let heightOfInput = document.querySelector(".CodeMirror-sizer").clientHeight;
+        let {
+          top: topOfButtons,
+          height: heightOfButtons
+        } = document.querySelector(".buttons").getBoundingClientRect();
+
+        console.log(heightOfInput - topOfButtons)
+
+        if (heightOfInput - topOfButtons > 1) {
+          let outputDiv = document.querySelector(".output");
+          outputDiv.style.height = `${window.innerHeight - heightOfInput - heightOfButtons}px`;
+        }
+      }
+
+      window.addEventListener("resize", handleResize);
+      window.requestAnimationFrame(handleResize);
+    </script>
+  </body>
+</html>
+
+
+-->
