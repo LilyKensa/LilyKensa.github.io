@@ -276,66 +276,66 @@
     </div>
 
     <div class="buttons">
-      <div class="button" onclick="_run__BIKSSVBOV7G9JqxT();">Run</div>
+      <div class="button" onclick="_run__ji2GJ2nVmuzqACO3();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
         const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
-      <div class="button dev-only" onclick="__encode__qfbinlXLGXyDNyid();">Generate URL</div>
-      <div class="button dev-only" onclick="__clear__vMCZUC5ZwE2bhhQ6();">Clear URL</div>
-      <div class="button dev-only" onclick="__iframe__9j2XoUFmDPLnWjtN();">Copy iframe</div>
+      <div class="button dev-only" onclick="__encode__BMf5j1bZczqO1A7o();">Generate URL</div>
+      <div class="button dev-only" onclick="__clear__S8pobikcJ8voZGBH();">Clear URL</div>
+      <div class="button dev-only" onclick="__iframe__ga4hNtT0UNFNI0fv();">Copy iframe</div>
     </div>
 
     <div class="resize-bar"></div>
-    <div class="output" onscroll="_handleScroll__zO2427ED75hGZF45();"></div>
+    <div class="output" onscroll="_handleScroll__4V9R5Lu24Ynq00zG();"></div>
 
     <script>
-      var _editor__SNwVLrlXhjDvjUdT;
+      var _editor__ORSxbk9wX48YATSJ;
 
       document.addEventListener("DOMContentLoaded", function () {
-        _editor__SNwVLrlXhjDvjUdT = CodeMirror.fromTextArea(document.getElementById("code"), {
+        _editor__ORSxbk9wX48YATSJ = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           mode: "javascript",
           theme: "vscode-dark" // "ambiance"
         });
 
-        var _urlParams__kTVSg2dIq1YUrLyx = new URLSearchParams(window.location.search);
-        const _codeContent__fhU2m2Czg4P5xZ0z = _urlParams__kTVSg2dIq1YUrLyx.get("content");
-        const _devMode__jRcePRX6f4gSnO4f     = _urlParams__kTVSg2dIq1YUrLyx.get("dev") ? true : false;
+        var _urlParams__gGalxYE2iZOzhEoa = new URLSearchParams(window.location.search);
+        const _codeContent__jf4Lf1hqn0tgY5Xn = _urlParams__gGalxYE2iZOzhEoa.get("content");
+        const _devMode__FlZIcp21LoAYfYPk     = _urlParams__gGalxYE2iZOzhEoa.get("dev") ? true : false;
         
-        _editor__SNwVLrlXhjDvjUdT.setValue(_codeContent__fhU2m2Czg4P5xZ0z ?? "// Enter your JavaScript code here...");
+        _editor__ORSxbk9wX48YATSJ.setValue(_codeContent__jf4Lf1hqn0tgY5Xn ?? "// Enter your JavaScript code here...");
 
-        if (!_devMode__jRcePRX6f4gSnO4f) {
+        if (!_devMode__FlZIcp21LoAYfYPk) {
           for (let secretElement of document.querySelectorAll(".dev-only")) {
             secretElement.style["display"] = "none";
           }
         }
       });
 
-      var _outputs__LDXSnMn01QPFF968 = [];
+      var _outputs__9abS3AOfo0S25a9d = [];
 
-      function _write__LrLdWl1k64053NAz(output) {
-        _outputs__LDXSnMn01QPFF968.push(
+      function _write__FAMib9qrNNq88ZvT(output) {
+        _outputs__9abS3AOfo0S25a9d.push(
           output
             .replaceAll(/\r\n|\r|\n/g, "</p><p>")
             .replaceAll(/ /g, "&nbsp;")
         );
       }
 
-      function _run__BIKSSVBOV7G9JqxT() {
+      function _run__ji2GJ2nVmuzqACO3() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(___run__BIKSSVBOV7G9JqxT__oV6f8VsGulePVVur);
+          window.requestAnimationFrame(___run__ji2GJ2nVmuzqACO3__OAQYGiXykdAZEPol);
         });
       }
-      function ___run__BIKSSVBOV7G9JqxT__oV6f8VsGulePVVur() {
-        let code = _editor__SNwVLrlXhjDvjUdT.getValue();
+      function ___run__ji2GJ2nVmuzqACO3__OAQYGiXykdAZEPol() {
+        let code = _editor__ORSxbk9wX48YATSJ.getValue();
 
         // Capture standard output and error streams
-        var _originalConsoleLog__mrC1OqQZhWsKo073 = console.log;
-        var _originalConsoleError__DYdDUCwDseZuTJ19 = console.error;
+        var _originalConsoleLog__xro1Irlr2LkndxnF = console.log;
+        var _originalConsoleError__M6ZTe8FcZMyVcsdy = console.error;
 
         // for (let key of Object.keys(console)) {
         //   if (console.hasOwnProperty(key)) {
@@ -344,13 +344,13 @@
         // }
 
         console.log = function (...messages) {
-          _write__LrLdWl1k64053NAz(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
-          // _originalConsoleLog__mrC1OqQZhWsKo073.apply(console, arguments);
+          _write__FAMib9qrNNq88ZvT(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          // _originalConsoleLog__xro1Irlr2LkndxnF.apply(console, arguments);
         };
 
         console.error = function (error) {
-          _write__LrLdWl1k64053NAz(`<p>Error: <span class="error">${error}</span></p>`);
-          // _originalConsoleError__DYdDUCwDseZuTJ19.apply(console, arguments);
+          _write__FAMib9qrNNq88ZvT(`<p>Error: <span class="error">${error}</span></p>`);
+          // _originalConsoleError__M6ZTe8FcZMyVcsdy.apply(console, arguments);
         };
 
         try {
@@ -363,52 +363,52 @@
         } 
         finally {
           // Restore the original console.log, console.error, and prompt
-          console.log = _originalConsoleLog__mrC1OqQZhWsKo073;
-          console.error = _originalConsoleError__DYdDUCwDseZuTJ19;
+          console.log = _originalConsoleLog__xro1Irlr2LkndxnF;
+          console.error = _originalConsoleError__M6ZTe8FcZMyVcsdy;
         }
       }
 
-      function __encode__qfbinlXLGXyDNyid() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__SNwVLrlXhjDvjUdT.getValue())}`;
-        // navigator.clipboard._write__LrLdWl1k64053NAzText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __encode__BMf5j1bZczqO1A7o() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__ORSxbk9wX48YATSJ.getValue())}`;
+        // navigator.clipboard._write__FAMib9qrNNq88ZvTText(`<iframe allow="modal" src="${url}"></iframe>`);
         window.open(url, "_blank");
       }
 
-      function __iframe__9j2XoUFmDPLnWjtN() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__SNwVLrlXhjDvjUdT.getValue())}`;
-        navigator.clipboard._write__LrLdWl1k64053NAzText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __iframe__ga4hNtT0UNFNI0fv() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__ORSxbk9wX48YATSJ.getValue())}`;
+        navigator.clipboard._write__FAMib9qrNNq88ZvTText(`<iframe allow="modal" src="${url}"></iframe>`);
       }
 
-      function __clear__vMCZUC5ZwE2bhhQ6() {
+      function __clear__S8pobikcJ8voZGBH() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
       }
 
-      function _updateFrame__YUSc2I4zP6E0BkWX() {
-        if (_outputs__LDXSnMn01QPFF968.length) {
+      function _updateFrame__qPra2dcYZ9HCF5mI() {
+        if (_outputs__9abS3AOfo0S25a9d.length) {
           var outputDiv = document.querySelector(".output");
 
-          // outputDiv.innerHTML += _outputs__LDXSnMn01QPFF968.shift();
-          outputDiv.innerHTML += _outputs__LDXSnMn01QPFF968.slice(0, 10).join("");
-          _outputs__LDXSnMn01QPFF968.splice(0, 10);
+          // outputDiv.innerHTML += _outputs__9abS3AOfo0S25a9d.shift();
+          outputDiv.innerHTML += _outputs__9abS3AOfo0S25a9d.slice(0, 10).join("");
+          _outputs__9abS3AOfo0S25a9d.splice(0, 10);
 
-          if (_scrollToBottom__TfIMwjH6ZbpGADPX) {
+          if (_scrollToBottom__eGPOZ4tsoKFxuPvH) {
             outputDiv.scrollTop = outputDiv.scrollHeight;
           }
         }
 
-        window.requestAnimationFrame(_updateFrame__YUSc2I4zP6E0BkWX);
+        window.requestAnimationFrame(_updateFrame__qPra2dcYZ9HCF5mI);
       }
-      window.requestAnimationFrame(_updateFrame__YUSc2I4zP6E0BkWX);
+      window.requestAnimationFrame(_updateFrame__qPra2dcYZ9HCF5mI);
 
-      var _scrollToBottom__TfIMwjH6ZbpGADPX = true;
+      var _scrollToBottom__eGPOZ4tsoKFxuPvH = true;
 
-      function _handleScroll__zO2427ED75hGZF45() {
-        _scrollToBottom__TfIMwjH6ZbpGADPX = false;
+      function _handleScroll__4V9R5Lu24Ynq00zG() {
+        _scrollToBottom__eGPOZ4tsoKFxuPvH = false;
 
         var outputDiv = document.querySelector(".output");
         if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
-          _scrollToBottom__TfIMwjH6ZbpGADPX = true;
+          _scrollToBottom__eGPOZ4tsoKFxuPvH = true;
         }
       }
       
@@ -421,7 +421,7 @@
         document.querySelector(".output").style.height = "4em";
       }
 
-      var _resizer__s4GYLnrAgRdScxjO = {
+      var _resizer__HyuijZ7I1SShu5if = {
         target: document.querySelector(".output"),
         mouse: {
           y: -1,
@@ -431,26 +431,26 @@
       };
 
       window.addEventListener("mousedown", () => {
-        if (Math.abs(_resizer__s4GYLnrAgRdScxjO.mouse.y - _resizer__s4GYLnrAgRdScxjO.target.offsetTop) < 10) {
-          _resizer__s4GYLnrAgRdScxjO.mouse.pressed = true;
+        if (Math.abs(_resizer__HyuijZ7I1SShu5if.mouse.y - _resizer__HyuijZ7I1SShu5if.target.offsetTop) < 10) {
+          _resizer__HyuijZ7I1SShu5if.mouse.pressed = true;
         }
         else {
-          _resizer__s4GYLnrAgRdScxjO.mouse.locked = true;
+          _resizer__HyuijZ7I1SShu5if.mouse.locked = true;
         }
       });
       window.addEventListener("mouseup", () => {
-        _resizer__s4GYLnrAgRdScxjO.mouse.pressed = false;
-        _resizer__s4GYLnrAgRdScxjO.mouse.locked = false;
+        _resizer__HyuijZ7I1SShu5if.mouse.pressed = false;
+        _resizer__HyuijZ7I1SShu5if.mouse.locked = false;
       });
 
       window.addEventListener("mousemove", (ev) => {
         window.requestAnimationFrame(() => {
-          _resizer__s4GYLnrAgRdScxjO.mouse.y = ev.clientY;
+          _resizer__HyuijZ7I1SShu5if.mouse.y = ev.clientY;
 
-          if (_resizer__s4GYLnrAgRdScxjO.mouse.pressed) {
+          if (_resizer__HyuijZ7I1SShu5if.mouse.pressed) {
             ev.preventDefault();
 
-            _resizer__s4GYLnrAgRdScxjO.target.style["height"] = `${window.innerHeight - _resizer__s4GYLnrAgRdScxjO.mouse.y - 12}px`;
+            _resizer__HyuijZ7I1SShu5if.target.style["height"] = `${window.innerHeight - _resizer__HyuijZ7I1SShu5if.mouse.y - 12}px`;
 
             document.body.style.cursor = "ns-resize";
             document.querySelector(".resize-bar").style.background = "#2e6289";
@@ -462,7 +462,7 @@
         });
       });
 
-      function _handleResize__YF4UIv620dHwo1RV() {
+      function _handleResize__jkpnuwhwUjVBiyPV() {
         let heightOfInput = document.querySelector(".CodeMirror-sizer").clientHeight;
         let {
           top: topOfButtons,
@@ -473,12 +473,12 @@
 
         if (heightOfInput - topOfButtons > 1) {
           let outputDiv = document.querySelector(".output");
-          outputDiv.style.height = `${window.innerHeight - heightOfInput - heightOfButtons}px`;
+          outputDiv.style.height = `${window.innerHeight - heightOfInput - heightOfButtons - 2}px`;
         }
       }
 
-      window.addEventListener("resize", _handleResize__YF4UIv620dHwo1RV);
-      window.requestAnimationFrame(_handleResize__YF4UIv620dHwo1RV);
+      window.addEventListener("resize", _handleResize__jkpnuwhwUjVBiyPV);
+      window.requestAnimationFrame(_handleResize__jkpnuwhwUjVBiyPV);
     </script>
   </body>
 </html>
@@ -961,7 +961,7 @@ ORIGINAL HTML:
 
         if (heightOfInput - topOfButtons > 1) {
           let outputDiv = document.querySelector(".output");
-          outputDiv.style.height = `${window.innerHeight - heightOfInput - heightOfButtons}px`;
+          outputDiv.style.height = `${window.innerHeight - heightOfInput - heightOfButtons - 2}px`;
         }
       }
 
