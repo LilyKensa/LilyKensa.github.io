@@ -65,7 +65,7 @@
         ctx.font = `${fontSize}px Arial`;
       }
 
-      while (ctx.measureText(textParam).width > window.innerWidth - 20 || fontSize > window.innerHeight - 20) {
+      while (ctx.measureText(textParam).width > window.innerWidth - 5 || fontSize > window.innerHeight - 5) {
         fontSize--;
         ctx.font = `${fontSize}px Arial`;
       }
