@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spoiler</title>
+  <style>
+    body {
+      margin: 0;
+      width: 100dvw;
+      height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    canvas {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    #spoiler {
+      position: absolute;
+      width: 100dvw;
+      height: 100dvh;
+      background: #222;
+      transition: 120ms ease;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="textCanvas"></canvas>
+
+  <div id="spoiler">
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById('textCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Get text parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const textParam = urlParams.get('text');
+
+    // Set the canvas size to match the viewport
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Font size scaling factor (adjust as needed)
+    const scaleFactor = 1;
+
+    // Measure text width and set font size accordingly
+    let fontSize = window.innerWidth * scaleFactor;
+    ctx.font = `${fontSize}px Arial`;
+
+    while (ctx.measureText(textParam).width > window.innerWidth - 20 || fontSize > window.innerHeight - 20) {
+      console.log(ctx.measureText(textParam))
+      fontSize--;
+      ctx.font = `${fontSize}px Arial`;
+    }
+
+    // Center the text on the canvas
+    const textX = (canvas.width - ctx.measureText(textParam).width) / 2;
+    const textY = (canvas.height) / 2 + fontSize * 0.3;
+
+    ctx.fillStyle = "#eee";
+
+    // Draw the scaled text on the canvas
+    ctx.fillText(textParam, textX, textY);
+
+    let visible = false;
+    document.querySelector("#spoiler").addEventListener("click", (ev) => {
+      visible = !visible;
+
+      if (visible) {
+        ev.target.style.background = "transparent";
+      }
+      else {
+        ev.target.style.background = null;
+      }
+    })
+  </script>
+</body>
+
+</html>
