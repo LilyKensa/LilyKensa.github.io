@@ -47,31 +47,40 @@
     const urlParams = new URLSearchParams(window.location.search);
     const textParam = urlParams.get('text');
 
-    // Set the canvas size to match the viewport
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const onResize = () => {
+      // Set the canvas size to match the viewport
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-    // Font size scaling factor (adjust as needed)
-    const scaleFactor = 1;
+      // Font size scaling factor (adjust as needed)
+      const scaleFactor = 1;
 
-    // Measure text width and set font size accordingly
-    let fontSize = window.innerWidth * scaleFactor;
-    ctx.font = `${fontSize}px Arial`;
-
-    while (ctx.measureText(textParam).width > window.innerWidth - 20 || fontSize > window.innerHeight - 20) {
-      console.log(ctx.measureText(textParam))
-      fontSize--;
+      // Measure text width and set font size accordingly
+      let fontSize = window.innerWidth * scaleFactor;
       ctx.font = `${fontSize}px Arial`;
+
+      while (ctx.measureText(textParam).width < window.innerWidth || fontSize < window.innerHeight) {
+        fontSize++;
+        ctx.font = `${fontSize}px Arial`;
+      }
+
+      while (ctx.measureText(textParam).width > window.innerWidth - 20 || fontSize > window.innerHeight - 20) {
+        fontSize--;
+        ctx.font = `${fontSize}px Arial`;
+      }
+
+      // Center the text on the canvas
+      const textX = (canvas.width - ctx.measureText(textParam).width) / 2;
+      const textY = (canvas.height) / 2 + fontSize * 0.3;
+
+      ctx.fillStyle = "#eee";
+
+      // Draw the scaled text on the canvas
+      ctx.fillText(textParam, textX, textY);
     }
 
-    // Center the text on the canvas
-    const textX = (canvas.width - ctx.measureText(textParam).width) / 2;
-    const textY = (canvas.height) / 2 + fontSize * 0.3;
-
-    ctx.fillStyle = "#eee";
-
-    // Draw the scaled text on the canvas
-    ctx.fillText(textParam, textX, textY);
+    onResize();
+    window.addEventListener("resize", onResize);
 
     let visible = false;
     document.querySelector("#spoiler").addEventListener("click", (ev) => {
