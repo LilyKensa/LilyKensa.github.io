@@ -276,66 +276,66 @@
     </div>
 
     <div class="buttons">
-      <div class="button" onclick="_run__SN4Ve7I5VR08wbuo();">Run</div>
+      <div class="button" onclick="_run__Dn8UmU2ZSJuLFZ3N();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
         const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
-      <div class="button dev-only" onclick="__encode__ksYkSS1ccFyblNUv();">Generate URL</div>
-      <div class="button dev-only" onclick="__clear__jQnKIatf2uYeMKtO();">Clear URL</div>
-      <div class="button dev-only" onclick="__iframe__jyOXHDHMMHkfNbTs();">Copy iframe</div>
+      <div class="button dev-only" onclick="__encode__Fg9LQ1jyBXHwSaLz();">Generate URL</div>
+      <div class="button dev-only" onclick="__clear__9Tobtog5yoJei6Nl();">Clear URL</div>
+      <div class="button dev-only" onclick="__iframe__XxPRdsOuGmv1gC8v();">Copy iframe</div>
     </div>
 
     <div class="resize-bar"></div>
-    <div class="output" onscroll="_handleScroll__hSP7C1aKkiyuYczh();"></div>
+    <div class="output" onscroll="_handleScroll__mwaAFTYyXabWKtJo();"></div>
 
     <script>
-      var _editor__EfKZ4tSbL1FykQgh;
+      var _editor__MeCmJWoFpvCYSnik;
 
       document.addEventListener("DOMContentLoaded", function () {
-        _editor__EfKZ4tSbL1FykQgh = CodeMirror.fromTextArea(document.getElementById("code"), {
+        _editor__MeCmJWoFpvCYSnik = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           mode: "javascript",
           theme: "vscode-dark" // "ambiance"
         });
 
-        var _urlParams__ARQk9GyFV68jas0m = new URLSearchParams(window.location.search);
-        const _codeContent__gTxj1bKF9EFRaTDr = _urlParams__ARQk9GyFV68jas0m.get("content");
-        const _devMode__n1bVnzNx2KMeDMfB     = _urlParams__ARQk9GyFV68jas0m.get("dev") ? true : false;
+        var _urlParams__qZoQHGGi8ZSheB0V = new URLSearchParams(window.location.search);
+        const _codeContent__LbgOkRIFF4GtxU3a = _urlParams__qZoQHGGi8ZSheB0V.get("content");
+        const _devMode__0R2tdIBLkCqsrIud     = _urlParams__qZoQHGGi8ZSheB0V.get("dev") ? true : false;
         
-        _editor__EfKZ4tSbL1FykQgh.setValue(_codeContent__gTxj1bKF9EFRaTDr ?? "// Enter your JavaScript code here...");
+        _editor__MeCmJWoFpvCYSnik.setValue(_codeContent__LbgOkRIFF4GtxU3a ?? "// Enter your JavaScript code here...");
 
-        if (!_devMode__n1bVnzNx2KMeDMfB) {
+        if (!_devMode__0R2tdIBLkCqsrIud) {
           for (let secretElement of document.querySelectorAll(".dev-only")) {
             secretElement.style["display"] = "none";
           }
         }
       });
 
-      var _outputs__PWfo2xFMJiaWiSwf = [];
+      var _outputs__Eb5XkLKtu6wyLXjo = [];
 
-      function _write__9S94ri9FViVtGlvU(output) {
-        _outputs__PWfo2xFMJiaWiSwf.push(
+      function __write__Zoyrxa22ZKToKiDY(output) {
+        _outputs__Eb5XkLKtu6wyLXjo.push(
           output
             .replaceAll(/\r\n|\r|\n/g, "</p><p>")
             .replaceAll(/ /g, "&nbsp;")
         );
       }
 
-      function _run__SN4Ve7I5VR08wbuo() {
+      function _run__Dn8UmU2ZSJuLFZ3N() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(___run__SN4Ve7I5VR08wbuo__dS4VL9UYMiKxRjkX);
+          window.requestAnimationFrame(___run__Dn8UmU2ZSJuLFZ3N__e2sU08mPLdUxKDEh);
         });
       }
-      function ___run__SN4Ve7I5VR08wbuo__dS4VL9UYMiKxRjkX() {
-        let code = _editor__EfKZ4tSbL1FykQgh.getValue();
+      function ___run__Dn8UmU2ZSJuLFZ3N__e2sU08mPLdUxKDEh() {
+        let code = _editor__MeCmJWoFpvCYSnik.getValue();
 
         // Capture standard output and error streams
-        var _originalConsoleLog__7IBziNkS6Eo1pgr0 = console.log;
-        var _originalConsoleError__TAcIv666nNGnSspC = console.error;
+        var _originalConsoleLog__JYZ8ISLMNilXh7jP = console.log;
+        var _originalConsoleError__SRULntNFN9TqK2hf = console.error;
 
         // for (let key of Object.keys(console)) {
         //   if (console.hasOwnProperty(key)) {
@@ -356,13 +356,13 @@
               : 
               e
           );
-          _write__9S94ri9FViVtGlvU(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
-          // _originalConsoleLog__7IBziNkS6Eo1pgr0.apply(console, arguments);
+          __write__Zoyrxa22ZKToKiDY(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          // _originalConsoleLog__JYZ8ISLMNilXh7jP.apply(console, arguments);
         };
 
         console.error = function (error) {
-          _write__9S94ri9FViVtGlvU(`<p>Error: <span class="error">${error}</span></p>`);
-          // _originalConsoleError__TAcIv666nNGnSspC.apply(console, arguments);
+          __write__Zoyrxa22ZKToKiDY(`<p>Error: <span class="error">${error}</span></p>`);
+          // _originalConsoleError__SRULntNFN9TqK2hf.apply(console, arguments);
         };
 
         try {
@@ -375,52 +375,52 @@
         } 
         finally {
           // Restore the original console.log, console.error, and prompt
-          console.log = _originalConsoleLog__7IBziNkS6Eo1pgr0;
-          console.error = _originalConsoleError__TAcIv666nNGnSspC;
+          console.log = _originalConsoleLog__JYZ8ISLMNilXh7jP;
+          console.error = _originalConsoleError__SRULntNFN9TqK2hf;
         }
       }
 
-      function __encode__ksYkSS1ccFyblNUv() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__EfKZ4tSbL1FykQgh.getValue())}`;
-        // navigator.clipboard._write__9S94ri9FViVtGlvUText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __encode__Fg9LQ1jyBXHwSaLz() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__MeCmJWoFpvCYSnik.getValue())}`;
+        // navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
         window.open(url, "_blank");
       }
 
-      function __iframe__jyOXHDHMMHkfNbTs() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__EfKZ4tSbL1FykQgh.getValue())}`;
-        navigator.clipboard._write__9S94ri9FViVtGlvUText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __iframe__XxPRdsOuGmv1gC8v() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__MeCmJWoFpvCYSnik.getValue())}`;
+        navigator.clipboard.writeText(`<iframe allow="modal" src="${url}"></iframe>`);
       }
 
-      function __clear__jQnKIatf2uYeMKtO() {
+      function __clear__9Tobtog5yoJei6Nl() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
       }
 
-      function _updateFrame__e6ssYWLujyBeFcad() {
-        if (_outputs__PWfo2xFMJiaWiSwf.length) {
+      function _updateFrame__blCOUjyKfmZh0clV() {
+        if (_outputs__Eb5XkLKtu6wyLXjo.length) {
           var outputDiv = document.querySelector(".output");
 
-          // outputDiv.innerHTML += _outputs__PWfo2xFMJiaWiSwf.shift();
-          outputDiv.innerHTML += _outputs__PWfo2xFMJiaWiSwf.slice(0, 10).join("");
-          _outputs__PWfo2xFMJiaWiSwf.splice(0, 10);
+          // outputDiv.innerHTML += _outputs__Eb5XkLKtu6wyLXjo.shift();
+          outputDiv.innerHTML += _outputs__Eb5XkLKtu6wyLXjo.slice(0, 10).join("");
+          _outputs__Eb5XkLKtu6wyLXjo.splice(0, 10);
 
-          if (_scrollToBottom__ZydpDpiLrXwNfXVF) {
+          if (_scrollToBottom__ql2PSps1m3fFqxoo) {
             outputDiv.scrollTop = outputDiv.scrollHeight;
           }
         }
 
-        window.requestAnimationFrame(_updateFrame__e6ssYWLujyBeFcad);
+        window.requestAnimationFrame(_updateFrame__blCOUjyKfmZh0clV);
       }
-      window.requestAnimationFrame(_updateFrame__e6ssYWLujyBeFcad);
+      window.requestAnimationFrame(_updateFrame__blCOUjyKfmZh0clV);
 
-      var _scrollToBottom__ZydpDpiLrXwNfXVF = true;
+      var _scrollToBottom__ql2PSps1m3fFqxoo = true;
 
-      function _handleScroll__hSP7C1aKkiyuYczh() {
-        _scrollToBottom__ZydpDpiLrXwNfXVF = false;
+      function _handleScroll__mwaAFTYyXabWKtJo() {
+        _scrollToBottom__ql2PSps1m3fFqxoo = false;
 
         var outputDiv = document.querySelector(".output");
         if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
-          _scrollToBottom__ZydpDpiLrXwNfXVF = true;
+          _scrollToBottom__ql2PSps1m3fFqxoo = true;
         }
       }
       
@@ -433,7 +433,7 @@
         document.querySelector(".output").style.height = "4em";
       }
 
-      var _resizer__VZ9r8KVnKmwJFMe3 = {
+      var _resizer__8IaDkuQCCQ6rinRV = {
         outputDiv: document.querySelector(".output"),
         buttonsDiv: document.querySelector(".buttons"),
         inputDiv: document.querySelector(".input"),
@@ -445,28 +445,28 @@
       };
 
       window.addEventListener("mousedown", () => {
-        if (Math.abs(_resizer__VZ9r8KVnKmwJFMe3.mouse.y - _resizer__VZ9r8KVnKmwJFMe3.outputDiv.offsetTop) < 10) {
-          _resizer__VZ9r8KVnKmwJFMe3.mouse.pressed = true;
+        if (Math.abs(_resizer__8IaDkuQCCQ6rinRV.mouse.y - _resizer__8IaDkuQCCQ6rinRV.outputDiv.offsetTop) < 10) {
+          _resizer__8IaDkuQCCQ6rinRV.mouse.pressed = true;
         }
         else {
-          _resizer__VZ9r8KVnKmwJFMe3.mouse.locked = true;
+          _resizer__8IaDkuQCCQ6rinRV.mouse.locked = true;
         }
       });
       window.addEventListener("mouseup", () => {
-        _resizer__VZ9r8KVnKmwJFMe3.mouse.pressed = false;
-        _resizer__VZ9r8KVnKmwJFMe3.mouse.locked = false;
+        _resizer__8IaDkuQCCQ6rinRV.mouse.pressed = false;
+        _resizer__8IaDkuQCCQ6rinRV.mouse.locked = false;
       });
 
       window.addEventListener("mousemove", (ev) => {
         window.requestAnimationFrame(() => {
-          _resizer__VZ9r8KVnKmwJFMe3.mouse.y = ev.clientY;
+          _resizer__8IaDkuQCCQ6rinRV.mouse.y = ev.clientY;
 
-          if (_resizer__VZ9r8KVnKmwJFMe3.mouse.pressed) {
+          if (_resizer__8IaDkuQCCQ6rinRV.mouse.pressed) {
             const $er = 12;
             ev.preventDefault();
 
-            _resizer__VZ9r8KVnKmwJFMe3.inputDiv.style["height"] = `${_resizer__VZ9r8KVnKmwJFMe3.mouse.y - $er - _resizer__VZ9r8KVnKmwJFMe3.buttonsDiv.clientHeight}px`;
-            _resizer__VZ9r8KVnKmwJFMe3.outputDiv.style["height"] = `${window.innerHeight - _resizer__VZ9r8KVnKmwJFMe3.mouse.y - $er}px`;
+            _resizer__8IaDkuQCCQ6rinRV.inputDiv.style["height"] = `${_resizer__8IaDkuQCCQ6rinRV.mouse.y - $er - _resizer__8IaDkuQCCQ6rinRV.buttonsDiv.clientHeight}px`;
+            _resizer__8IaDkuQCCQ6rinRV.outputDiv.style["height"] = `${window.innerHeight - _resizer__8IaDkuQCCQ6rinRV.mouse.y - $er}px`;
 
             document.body.style.cursor = "ns-resize";
             document.querySelector(".resize-bar").style.background = "#2e6289";
@@ -478,7 +478,7 @@
         });
       });
 
-      function _handleResize__q6g3cDSKPcDWNXoM() {
+      function _handleResize__kkoLiQw0tXfGD1bz() {
         let heightOfInput = document.querySelector(".CodeMirror-sizer").clientHeight;
         let {
           top: topOfButtons,
@@ -491,8 +491,8 @@
         }
       }
 
-      window.addEventListener("resize", _handleResize__q6g3cDSKPcDWNXoM);
-      window.requestAnimationFrame(_handleResize__q6g3cDSKPcDWNXoM);
+      window.addEventListener("resize", _handleResize__kkoLiQw0tXfGD1bz);
+      window.requestAnimationFrame(_handleResize__kkoLiQw0tXfGD1bz);
     </script>
   </body>
 </html>
@@ -818,7 +818,7 @@ ORIGINAL HTML:
 
       var outputs = [];
 
-      function write(output) {
+      function _write(output) {
         outputs.push(
           output
             .replaceAll(/\r\n|\r|\n/g, "</p><p>")
@@ -858,12 +858,12 @@ ORIGINAL HTML:
               : 
               e
           );
-          write(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          _write(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
           // originalConsoleLog.apply(console, arguments);
         };
 
         console.error = function (error) {
-          write(`<p>Error: <span class="error">${error}</span></p>`);
+          _write(`<p>Error: <span class="error">${error}</span></p>`);
           // originalConsoleError.apply(console, arguments);
         };
 
