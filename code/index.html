@@ -276,66 +276,66 @@
     </div>
 
     <div class="buttons">
-      <div class="button" onclick="_run__tEUNFgzI49fz7wOZ();">Run</div>
+      <div class="button" onclick="_run__SN4Ve7I5VR08wbuo();">Run</div>
       <div class="button open" onclick="
         const selection = window.getSelection()
         const urlElement = document.querySelector('.output');
         urlElement.innerHTML = window.location.href;
         selection.setBaseAndExtent(urlElement, 0, urlElement, 1);
       ">Show URL</div>
-      <div class="button dev-only" onclick="__encode__ucaP7fMuwPui8Bme();">Generate URL</div>
-      <div class="button dev-only" onclick="__clear__QExYO1OY8dTu2J4J();">Clear URL</div>
-      <div class="button dev-only" onclick="__iframe__pRwYRcg0gm0KAS6Q();">Copy iframe</div>
+      <div class="button dev-only" onclick="__encode__ksYkSS1ccFyblNUv();">Generate URL</div>
+      <div class="button dev-only" onclick="__clear__jQnKIatf2uYeMKtO();">Clear URL</div>
+      <div class="button dev-only" onclick="__iframe__jyOXHDHMMHkfNbTs();">Copy iframe</div>
     </div>
 
     <div class="resize-bar"></div>
-    <div class="output" onscroll="_handleScroll__vQsTAo6m6W53x8Ad();"></div>
+    <div class="output" onscroll="_handleScroll__hSP7C1aKkiyuYczh();"></div>
 
     <script>
-      var _editor__mGqxEhV1BbzIcvkL;
+      var _editor__EfKZ4tSbL1FykQgh;
 
       document.addEventListener("DOMContentLoaded", function () {
-        _editor__mGqxEhV1BbzIcvkL = CodeMirror.fromTextArea(document.getElementById("code"), {
+        _editor__EfKZ4tSbL1FykQgh = CodeMirror.fromTextArea(document.getElementById("code"), {
           lineNumbers: true,
           mode: "javascript",
           theme: "vscode-dark" // "ambiance"
         });
 
-        var _urlParams__TPEwsoMsxQ3IUwIN = new URLSearchParams(window.location.search);
-        const _codeContent__Kna6iTIHz7fp7QQm = _urlParams__TPEwsoMsxQ3IUwIN.get("content");
-        const _devMode__DqxV4HhgwI3RWFB8     = _urlParams__TPEwsoMsxQ3IUwIN.get("dev") ? true : false;
+        var _urlParams__ARQk9GyFV68jas0m = new URLSearchParams(window.location.search);
+        const _codeContent__gTxj1bKF9EFRaTDr = _urlParams__ARQk9GyFV68jas0m.get("content");
+        const _devMode__n1bVnzNx2KMeDMfB     = _urlParams__ARQk9GyFV68jas0m.get("dev") ? true : false;
         
-        _editor__mGqxEhV1BbzIcvkL.setValue(_codeContent__Kna6iTIHz7fp7QQm ?? "// Enter your JavaScript code here...");
+        _editor__EfKZ4tSbL1FykQgh.setValue(_codeContent__gTxj1bKF9EFRaTDr ?? "// Enter your JavaScript code here...");
 
-        if (!_devMode__DqxV4HhgwI3RWFB8) {
+        if (!_devMode__n1bVnzNx2KMeDMfB) {
           for (let secretElement of document.querySelectorAll(".dev-only")) {
             secretElement.style["display"] = "none";
           }
         }
       });
 
-      var _outputs__rzcPYA0fUJjyCBMS = [];
+      var _outputs__PWfo2xFMJiaWiSwf = [];
 
-      function _write__aNqiWFYKeNhvXpJX(output) {
-        _outputs__rzcPYA0fUJjyCBMS.push(
+      function _write__9S94ri9FViVtGlvU(output) {
+        _outputs__PWfo2xFMJiaWiSwf.push(
           output
             .replaceAll(/\r\n|\r|\n/g, "</p><p>")
             .replaceAll(/ /g, "&nbsp;")
         );
       }
 
-      function _run__tEUNFgzI49fz7wOZ() {
+      function _run__SN4Ve7I5VR08wbuo() {
         document.querySelector(".output").innerHTML = "";
         window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(___run__tEUNFgzI49fz7wOZ__YBXvwhIPOeEoC12S);
+          window.requestAnimationFrame(___run__SN4Ve7I5VR08wbuo__dS4VL9UYMiKxRjkX);
         });
       }
-      function ___run__tEUNFgzI49fz7wOZ__YBXvwhIPOeEoC12S() {
-        let code = _editor__mGqxEhV1BbzIcvkL.getValue();
+      function ___run__SN4Ve7I5VR08wbuo__dS4VL9UYMiKxRjkX() {
+        let code = _editor__EfKZ4tSbL1FykQgh.getValue();
 
         // Capture standard output and error streams
-        var _originalConsoleLog__4NJV7DwYU3ygoRaB = console.log;
-        var _originalConsoleError__rdagXeQL0c8qkq5S = console.error;
+        var _originalConsoleLog__7IBziNkS6Eo1pgr0 = console.log;
+        var _originalConsoleError__TAcIv666nNGnSspC = console.error;
 
         // for (let key of Object.keys(console)) {
         //   if (console.hasOwnProperty(key)) {
@@ -344,13 +344,25 @@
         // }
 
         console.log = function (...messages) {
-          _write__aNqiWFYKeNhvXpJX(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
-          // _originalConsoleLog__4NJV7DwYU3ygoRaB.apply(console, arguments);
+          messages = messages.map(
+            (e) => e instanceof Array ? 
+              !e.length ? 
+                "[]" 
+              : 
+                `[ ${e.join(", ")} ]`
+            : 
+              e instanceof Object ? 
+                `{ ${Object.keys(e).map(k => `${k}: ${e[k]}`).join(", ")} }` 
+              : 
+              e
+          );
+          _write__9S94ri9FViVtGlvU(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
+          // _originalConsoleLog__7IBziNkS6Eo1pgr0.apply(console, arguments);
         };
 
         console.error = function (error) {
-          _write__aNqiWFYKeNhvXpJX(`<p>Error: <span class="error">${error}</span></p>`);
-          // _originalConsoleError__rdagXeQL0c8qkq5S.apply(console, arguments);
+          _write__9S94ri9FViVtGlvU(`<p>Error: <span class="error">${error}</span></p>`);
+          // _originalConsoleError__TAcIv666nNGnSspC.apply(console, arguments);
         };
 
         try {
@@ -363,52 +375,52 @@
         } 
         finally {
           // Restore the original console.log, console.error, and prompt
-          console.log = _originalConsoleLog__4NJV7DwYU3ygoRaB;
-          console.error = _originalConsoleError__rdagXeQL0c8qkq5S;
+          console.log = _originalConsoleLog__7IBziNkS6Eo1pgr0;
+          console.error = _originalConsoleError__TAcIv666nNGnSspC;
         }
       }
 
-      function __encode__ucaP7fMuwPui8Bme() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__mGqxEhV1BbzIcvkL.getValue())}`;
-        // navigator.clipboard._write__aNqiWFYKeNhvXpJXText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __encode__ksYkSS1ccFyblNUv() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__EfKZ4tSbL1FykQgh.getValue())}`;
+        // navigator.clipboard._write__9S94ri9FViVtGlvUText(`<iframe allow="modal" src="${url}"></iframe>`);
         window.open(url, "_blank");
       }
 
-      function __iframe__pRwYRcg0gm0KAS6Q() {
-        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__mGqxEhV1BbzIcvkL.getValue())}`;
-        navigator.clipboard._write__aNqiWFYKeNhvXpJXText(`<iframe allow="modal" src="${url}"></iframe>`);
+      function __iframe__jyOXHDHMMHkfNbTs() {
+        let url = `${window.location.href.split("?")[0]}?content=${encodeURIComponent(_editor__EfKZ4tSbL1FykQgh.getValue())}`;
+        navigator.clipboard._write__9S94ri9FViVtGlvUText(`<iframe allow="modal" src="${url}"></iframe>`);
       }
 
-      function __clear__QExYO1OY8dTu2J4J() {
+      function __clear__jQnKIatf2uYeMKtO() {
         if (confirm("Clear URL will also clear your code too!"))
           window.location.assign(`${window.location.pathname}?dev=true`);
       }
 
-      function _updateFrame__JQC7sK93GyGtFYn3() {
-        if (_outputs__rzcPYA0fUJjyCBMS.length) {
+      function _updateFrame__e6ssYWLujyBeFcad() {
+        if (_outputs__PWfo2xFMJiaWiSwf.length) {
           var outputDiv = document.querySelector(".output");
 
-          // outputDiv.innerHTML += _outputs__rzcPYA0fUJjyCBMS.shift();
-          outputDiv.innerHTML += _outputs__rzcPYA0fUJjyCBMS.slice(0, 10).join("");
-          _outputs__rzcPYA0fUJjyCBMS.splice(0, 10);
+          // outputDiv.innerHTML += _outputs__PWfo2xFMJiaWiSwf.shift();
+          outputDiv.innerHTML += _outputs__PWfo2xFMJiaWiSwf.slice(0, 10).join("");
+          _outputs__PWfo2xFMJiaWiSwf.splice(0, 10);
 
-          if (_scrollToBottom__9nfrEmhpm6tOmDzC) {
+          if (_scrollToBottom__ZydpDpiLrXwNfXVF) {
             outputDiv.scrollTop = outputDiv.scrollHeight;
           }
         }
 
-        window.requestAnimationFrame(_updateFrame__JQC7sK93GyGtFYn3);
+        window.requestAnimationFrame(_updateFrame__e6ssYWLujyBeFcad);
       }
-      window.requestAnimationFrame(_updateFrame__JQC7sK93GyGtFYn3);
+      window.requestAnimationFrame(_updateFrame__e6ssYWLujyBeFcad);
 
-      var _scrollToBottom__9nfrEmhpm6tOmDzC = true;
+      var _scrollToBottom__ZydpDpiLrXwNfXVF = true;
 
-      function _handleScroll__vQsTAo6m6W53x8Ad() {
-        _scrollToBottom__9nfrEmhpm6tOmDzC = false;
+      function _handleScroll__hSP7C1aKkiyuYczh() {
+        _scrollToBottom__ZydpDpiLrXwNfXVF = false;
 
         var outputDiv = document.querySelector(".output");
         if (Math.abs(outputDiv.scrollHeight - outputDiv.scrollTop - outputDiv.clientHeight) < 100) {
-          _scrollToBottom__9nfrEmhpm6tOmDzC = true;
+          _scrollToBottom__ZydpDpiLrXwNfXVF = true;
         }
       }
       
@@ -421,7 +433,7 @@
         document.querySelector(".output").style.height = "4em";
       }
 
-      var _resizer__aKlRyCM0bCQwC7j9 = {
+      var _resizer__VZ9r8KVnKmwJFMe3 = {
         outputDiv: document.querySelector(".output"),
         buttonsDiv: document.querySelector(".buttons"),
         inputDiv: document.querySelector(".input"),
@@ -433,28 +445,28 @@
       };
 
       window.addEventListener("mousedown", () => {
-        if (Math.abs(_resizer__aKlRyCM0bCQwC7j9.mouse.y - _resizer__aKlRyCM0bCQwC7j9.outputDiv.offsetTop) < 10) {
-          _resizer__aKlRyCM0bCQwC7j9.mouse.pressed = true;
+        if (Math.abs(_resizer__VZ9r8KVnKmwJFMe3.mouse.y - _resizer__VZ9r8KVnKmwJFMe3.outputDiv.offsetTop) < 10) {
+          _resizer__VZ9r8KVnKmwJFMe3.mouse.pressed = true;
         }
         else {
-          _resizer__aKlRyCM0bCQwC7j9.mouse.locked = true;
+          _resizer__VZ9r8KVnKmwJFMe3.mouse.locked = true;
         }
       });
       window.addEventListener("mouseup", () => {
-        _resizer__aKlRyCM0bCQwC7j9.mouse.pressed = false;
-        _resizer__aKlRyCM0bCQwC7j9.mouse.locked = false;
+        _resizer__VZ9r8KVnKmwJFMe3.mouse.pressed = false;
+        _resizer__VZ9r8KVnKmwJFMe3.mouse.locked = false;
       });
 
       window.addEventListener("mousemove", (ev) => {
         window.requestAnimationFrame(() => {
-          _resizer__aKlRyCM0bCQwC7j9.mouse.y = ev.clientY;
+          _resizer__VZ9r8KVnKmwJFMe3.mouse.y = ev.clientY;
 
-          if (_resizer__aKlRyCM0bCQwC7j9.mouse.pressed) {
+          if (_resizer__VZ9r8KVnKmwJFMe3.mouse.pressed) {
             const $er = 12;
             ev.preventDefault();
 
-            _resizer__aKlRyCM0bCQwC7j9.inputDiv.style["height"] = `${_resizer__aKlRyCM0bCQwC7j9.mouse.y - $er - _resizer__aKlRyCM0bCQwC7j9.buttonsDiv.clientHeight}px`;
-            _resizer__aKlRyCM0bCQwC7j9.outputDiv.style["height"] = `${window.innerHeight - _resizer__aKlRyCM0bCQwC7j9.mouse.y - $er}px`;
+            _resizer__VZ9r8KVnKmwJFMe3.inputDiv.style["height"] = `${_resizer__VZ9r8KVnKmwJFMe3.mouse.y - $er - _resizer__VZ9r8KVnKmwJFMe3.buttonsDiv.clientHeight}px`;
+            _resizer__VZ9r8KVnKmwJFMe3.outputDiv.style["height"] = `${window.innerHeight - _resizer__VZ9r8KVnKmwJFMe3.mouse.y - $er}px`;
 
             document.body.style.cursor = "ns-resize";
             document.querySelector(".resize-bar").style.background = "#2e6289";
@@ -466,7 +478,7 @@
         });
       });
 
-      function _handleResize__81knxzZkbUpIHQCG() {
+      function _handleResize__q6g3cDSKPcDWNXoM() {
         let heightOfInput = document.querySelector(".CodeMirror-sizer").clientHeight;
         let {
           top: topOfButtons,
@@ -479,8 +491,8 @@
         }
       }
 
-      window.addEventListener("resize", _handleResize__81knxzZkbUpIHQCG);
-      window.requestAnimationFrame(_handleResize__81knxzZkbUpIHQCG);
+      window.addEventListener("resize", _handleResize__q6g3cDSKPcDWNXoM);
+      window.requestAnimationFrame(_handleResize__q6g3cDSKPcDWNXoM);
     </script>
   </body>
 </html>
@@ -834,6 +846,18 @@ ORIGINAL HTML:
         // }
 
         console.log = function (...messages) {
+          messages = messages.map(
+            (e) => e instanceof Array ? 
+              !e.length ? 
+                "[]" 
+              : 
+                `[ ${e.join(", ")} ]`
+            : 
+              e instanceof Object ? 
+                `{ ${Object.keys(e).map(k => `${k}: ${e[k]}`).join(", ")} }` 
+              : 
+              e
+          );
           write(`<p>${messages.map(v => "" + v).join(" ")}</p>`);
           // originalConsoleLog.apply(console, arguments);
         };
