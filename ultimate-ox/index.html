@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Tic-Tac-Toe</title>
+  </head>
+  <body>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #262527;
+        color: #cfcfcf;
+      }
+
+      #root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+      }
+
+      .grid-container {
+        user-select: none;
+        font-size: 30px;
+        display: grid;
+        grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 200px 200px 200px;
+      }
+
+      .grid-container>.outerBoxContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .grid-container>.outerBoxContainer>.outerBox {
+        display: grid;
+        grid-template-columns: 60px 60px 60px;
+        grid-template-rows: 60px 60px 60px;
+        justify-content: center;
+        opacity: 40%;
+      }
+
+      .grid-container>.outerBoxContainer>.outerBox>.innerBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .grid-container>.outerBoxContainer>.outerBox:hover {
+        opacity: 60%;
+      }
+
+      .grid-container>.outerBoxContainer>.outerBox.active {
+        opacity: 100%;
+      }
+
+      .outerBox {
+        --gameColor: #dbdbdb;
+        color: var(--gameColor);
+      }
+
+      .outerBoxContainer:not(:nth-child(3n)) {
+        border-right: 2px solid #e7e7e7;
+      }
+
+      .outerBoxContainer:not(:nth-child(3n+1)) {
+        border-left: 2px solid #e7e7e7;
+      }
+
+      .outerBoxContainer:nth-child(-n+6) {
+        border-bottom: 2px solid #e7e7e7;
+      }
+
+      .outerBoxContainer:nth-child(n+4) {
+        border-top: 2px solid #e7e7e7;
+      }
+
+      .innerBox:not(:nth-child(3n)) {
+        border-right: 1px solid var(--gameColor);
+      }
+
+      .innerBox:not(:nth-child(3n+1)) {
+        border-left: 1px solid var(--gameColor);
+      }
+
+      .innerBox:nth-child(-n+6) {
+        border-bottom: 1px solid var(--gameColor);
+      }
+
+      .innerBox:nth-child(n+4) {
+        border-top: 1px solid var(--gameColor);
+      }
+
+      #options {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin: 12px;
+        width: min(90dvw, 800px);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        pointer-events: none;
+      }
+
+      #options>svg {
+        color: white;
+        --svg-size: 32px;
+        width: var(--svg-size);
+        height: var(--svg-size);
+        pointer-events: all;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+
+      #options> :not(:last-child) {
+        margin-right: 12px;
+      }
+
+      #options> :not(svg) {
+        opacity: 0;
+        transition: opacity 0.1s ease;
+      }
+
+      #options.active {
+        pointer-events: all;
+      }
+
+      #options.active>* {
+        opacity: 1;
+      }
+
+      #options.active>svg {
+        transform: rotate(60deg);
+      }
+
+      input,
+      input:focus-visible {
+        color: white;
+        height: 30px;
+        padding: 5px;
+        border-radius: 0;
+        box-shadow: none;
+        outline: 0;
+        border: 1px solid #9a9a9a;
+        background: transparent;
+      }
+
+      input[type=number]::-webkit-outer-spin-button,
+      input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type=number] {
+        appearance: textfield;
+        -moz-appearance: textfield;
+      }
+
+      input[type=color] {
+        vertical-align: middle;
+        padding: 2px;
+      }
+    </style>
+    <div id="root">
+      <div class="grid-container"></div>
+    </div>
+    <div id="options">
+      <div class="p1">
+        <input id="p1-color" type="color" style="width: 30px;">
+        <input id="p1-symbol" type="text" style="width: 80px;" placeholder="P1 Symbol">
+        <input id="p1-size" type="number" style="width: 40px;" placeholder="Size">
+      </div>
+      <div class="p2">
+        <input id="p2-color" type="color" style="width: 30px;">
+        <input id="p2-symbol" type="text" style="width: 80px;" placeholder="P2 Symbol">
+        <input id="p2-size" type="number" style="width: 40px;" placeholder="Size">
+      </div>
+      <div class="op">
+        <input id="undo" type="button" value="Undo" style="width: 46px; cursor: pointer">
+      </div><svg xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z"
+          fill="white"></path>
+      </svg>
+    </div>
+    <script>
+      let playerOptions = [
+        null,
+        {
+          symbol: "◯",
+          color: "#11ff11",
+          size: 30
+        },
+        {
+          symbol: "╳",
+          color: "#3399ff",
+          size: 30
+        }
+      ];
+      let selectInputElementAndModifyValue = (selector, newValue) => document.querySelector(selector).value = newValue;
+      for (let i of [1, 2]) {
+        selectInputElementAndModifyValue(`#p${i}-color`, playerOptions[i].color);
+        selectInputElementAndModifyValue(`#p${i}-symbol`, playerOptions[i].symbol);
+        selectInputElementAndModifyValue(`#p${i}-size`, playerOptions[i].size);
+      }
+      let gridContainer = document.querySelector(".grid-container");
+      for (let oy = 0; oy < 3; ++oy) {
+        for (let ox = 0; ox < 3; ++ox) {
+          let outerBoxContainer = document.createElement("div");
+          outerBoxContainer.classList.add("outerBoxContainer");
+          let outerBox = document.createElement("div");
+          outerBox.classList.add("outerBox", "active");
+          outerBox.setAttribute("data-position", JSON.stringify({
+            ox, oy
+          }));
+          outerBoxContainer.appendChild(outerBox);
+          for (let iy = 0; iy < 3; ++iy) {
+            for (let ix = 0; ix < 3; ++ix) {
+              let innerBox = document.createElement("div");
+              innerBox.classList.add("innerBox");
+              innerBox.setAttribute("data-position", JSON.stringify({
+                ox, oy, ix, iy
+              }));
+              outerBox.appendChild(innerBox);
+            }
+          }
+          gridContainer.appendChild(outerBoxContainer);
+        }
+      }
+      let nowPlaying = 1;
+      let switchPlayer = () => nowPlaying = nowPlaying === 1 ? 2 : 1;
+      let gameHistory = new Array;
+      let nextPos = null;
+      let outerBoxGameBoard = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ];
+      function checkIfOuterBoxIsFullAndUpdateNextPos() {
+        let targetOuterBoxIsFull = true;
+        const outerBoxes = document.querySelectorAll(".outerBox");
+        outerBoxes.forEach((box) => {
+          let outerBoxPos = JSON.parse(box.getAttribute("data-position"));
+          box.classList.remove("active");
+          if (outerBoxPos.ox === nextPos.x && outerBoxPos.oy === nextPos.y) {
+            box.classList.add("active");
+            for (let innerBox of box.querySelectorAll(".innerBox")) {
+              if (innerBox.innerHTML === "")
+                targetOuterBoxIsFull = false;
+            }
+          }
+        });
+        return targetOuterBoxIsFull;
+      }
+      function checkInnerWin(outerBox, which) {
+        if (!which) {
+          return checkInnerWin(outerBox, nowPlaying);
+        }
+        let innerBoxes = outerBox.querySelectorAll(".innerBox");
+        let winThisBox = false;
+        /*
+          0 1 2
+          3 4 5
+          6 7 8
+        */
+        const winPos = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6]
+        ];
+        for (let wp of winPos) {
+          let criteria = true;
+          for (let p of wp)
+            if (innerBoxes[p].innerHTML !== playerOptions[which].symbol)
+              criteria = false;
+          if (criteria) {
+            winThisBox = true;
+            break;
+          }
+        }
+        return winThisBox;
+      }
+      function refreshStyle() {
+        for (let i of [1, 2]) {
+          let oldPlayerOptions = JSON.parse(JSON.stringify(playerOptions));
+          playerOptions[i].color = document.querySelector(`#p${i}-color`).value;
+          playerOptions[i].symbol = document.querySelector(`#p${i}-symbol`).value;
+          playerOptions[i].size = Number.parseInt(document.querySelector(`#p${i}-size`).value);
+          for (let innerBox of document.querySelectorAll(".innerBox")) {
+            if (innerBox.innerHTML === oldPlayerOptions[i].symbol) {
+              innerBox.innerHTML = playerOptions[i].symbol;
+              innerBox.style.fontSize = playerOptions[i].size + "px";
+            }
+          }
+        }
+        for (let outerBox of document.querySelectorAll(".outerBox")) {
+          for (let j of [1, 2])
+            if (checkInnerWin(outerBox, j))
+              outerBox.style.setProperty("--gameColor", playerOptions[j].color);
+        }
+      }
+      document.querySelectorAll(".innerBox").forEach((box) => {
+        box.addEventListener("click", (ev) => {
+          // get element and position data
+          let el = ev.target;
+          let pos = JSON.parse(el.getAttribute("data-position"));
+          // it's already filled in
+          if (el.innerHTML !== "")
+            return;
+          // not in legal outer box
+          if (nextPos && !(pos.ox === nextPos.x && pos.oy === nextPos.y))
+            return;
+          // set the content
+          el.innerHTML = playerOptions[nowPlaying].symbol;
+          el.style.fontSize = playerOptions[nowPlaying].size + "px";
+          // store history for rollback
+          gameHistory.push(pos);
+          // store next outer box pos
+          nextPos = {
+            x: pos.ix,
+            y: pos.iy
+          };
+          // check if the current box is full
+          // and if so, they can choose wherever they want in the next round
+          let targetOuterBoxIsFull = checkIfOuterBoxIsFullAndUpdateNextPos();
+          if (targetOuterBoxIsFull) {
+            nextPos = null;
+            document.querySelectorAll(".outerBox").forEach((box) => {
+              box.classList.add("active");
+            });
+          }
+          // check if the outer box is a inner win
+          let thisOuterBox = document.querySelectorAll(".outerBox")[pos.oy * 3 + pos.ox];
+          if (!outerBoxGameBoard[pos.oy][pos.ox]) {
+            if (checkInnerWin(thisOuterBox)) {
+              thisOuterBox.style.setProperty("--gameColor", playerOptions[nowPlaying].color);
+              outerBoxGameBoard[pos.oy][pos.ox] = nowPlaying;
+            }
+          }
+          switchPlayer();
+        });
+      });
+      document.querySelector("#options > svg").addEventListener("click", () => {
+        document.querySelector("#options").classList.toggle("active");
+      });
+      document.querySelector("#undo").addEventListener("click", () => {
+        let lastMove = gameHistory.pop();
+        if (!lastMove)
+          return;
+        let target = document
+          .querySelectorAll(".outerBox")[lastMove.oy * 3 + lastMove.ox]
+          .querySelectorAll(".innerBox")[lastMove.iy * 3 + lastMove.ix];
+        nextPos = {
+          x: lastMove.ox,
+          y: lastMove.oy
+        };
+        target.innerHTML = "";
+        for (let [i, outerBox] of document.querySelectorAll(".outerBox").entries()) {
+          outerBoxGameBoard[i / 3 | 0][i % 3] = 0;
+          for (let j of [1, 2])
+            if (checkInnerWin(outerBox, j))
+              outerBoxGameBoard[i / 3][i % 3] = j;
+          if (nextPos.y * 3 + nextPos.x === i)
+            outerBox.classList.add("active");
+          else
+            outerBox.classList.remove("active");
+        }
+      });
+      document.querySelectorAll("input").forEach(el => {
+        el.addEventListener("input", (ev) => {
+          if (!ev.target.value)
+            return;
+          refreshStyle();
+        });
+      });  
+    </script>
+  </body>
+</html>
