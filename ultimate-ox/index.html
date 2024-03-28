@@ -373,12 +373,13 @@
           outerBoxGameBoard[i / 3 | 0][i % 3] = 0;
           for (let j of [1, 2])
             if (checkInnerWin(outerBox, j))
-              outerBoxGameBoard[i / 3 | 0][i % 3] = j;
+              outerBoxGameBoard[i / 3][i % 3] = j;
           if (nextPos.y * 3 + nextPos.x === i)
             outerBox.classList.add("active");
           else
             outerBox.classList.remove("active");
         }
+        refreshStyle();
       });
       document.querySelectorAll("input").forEach(el => {
         el.addEventListener("input", (ev) => {
