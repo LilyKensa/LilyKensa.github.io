@@ -22,7 +22,7 @@
                 const response = await axios({ method: 'head', url });
 
                 // If we get a response, redirect
-                if (response) {
+                if (response.status === 200) {
                     window.location.href = url;
                 }
             } catch (error) {
