@@ -16,7 +16,7 @@
         // Function to check if the server is available
         async function checkServer() {
             try {
-                let url = `//125.228.249.66/${window.location.hash ? window.location.hash.slice(1)}`;
+                let url = `//125.228.249.66/${window.location.hash ? window.location.hash.slice(1) : ""}`;
                 // Sending a request to your server
                 const response = await fetch(url, {
                     method: 'HEAD', // HEAD request to just check if the server is reachable
