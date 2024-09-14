@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
     <script>
         // Function to check if the server is available
         async function checkServer() {
             try {
+                let url = `//125.228.249.66/${window.location.hash ? window.location.hash.slice(1)}`;
                 // Sending a request to your server
-                const response = await fetch('http://125.228.249.66/illustrations/', {
+                const response = await fetch(url, {
                     method: 'HEAD', // HEAD request to just check if the server is reachable
                     mode: 'no-cors', // no-cors because it's a different origin
                 });
 
                 // If we get a response, redirect
                 if (response) {
-                    window.location.href = 'http://125.228.249.66/illustrations/';
+                    window.location.href = url;
                 }
             } catch (error) {
                 // If there's an error, server is likely not available
-                console.error('Server not available', error);
+                console.error('Server not available:', error);
                 alert('Server is currently unavailable. Please try again later.');
             }
         }
