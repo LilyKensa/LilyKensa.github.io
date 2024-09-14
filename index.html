@@ -1,1 +1,36 @@
-I don't know what to put in the index page lol
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Function to check if the server is available
+        async function checkServer() {
+            try {
+                // Sending a request to your server
+                const response = await fetch('http://125.228.249.66/illustrations/', {
+                    method: 'HEAD', // HEAD request to just check if the server is reachable
+                    mode: 'no-cors', // no-cors because it's a different origin
+                });
+
+                // If we get a response, redirect
+                if (response) {
+                    window.location.href = 'http://125.228.249.66/illustrations/';
+                }
+            } catch (error) {
+                // If there's an error, server is likely not available
+                console.error('Server not available', error);
+                alert('Server is currently unavailable. Please try again later.');
+            }
+        }
+
+        // Run the checkServer function when the page loads
+        window.onload = checkServer;
+    </script>
+</head>
+<body>
+    <h1>Checking server availability...</h1>
+    <p>If the server is available, you will be redirected shortly.</p>
+</body>
+</html>
