@@ -12,16 +12,14 @@
             text-align: center;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         // Function to check if the server is available
         async function checkServer() {
             try {
-                let url = `//125.228.249.66/${window.location.hash ? window.location.hash.slice(1) : ""}`;
+                let url = `http://125.228.249.66/${window.location.hash ? window.location.hash.slice(1) : ""}`;
                 // Sending a request to your server
-                const response = await fetch(url, {
-                    method: 'HEAD', // HEAD request to just check if the server is reachable
-                    mode: 'no-cors', // no-cors because it's a different origin
-                });
+                const response = await axios({ method: 'head', url });
 
                 // If we get a response, redirect
                 if (response) {
