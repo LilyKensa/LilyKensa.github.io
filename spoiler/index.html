@@ -46,7 +46,7 @@
 
     // Get text parameter from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const textParam = urlParams.get('text');
+    const textParam = urlParams.get('text') || "Add ?text=... to the URL to get started";
 
     const onResize = () => {
       // Set the canvas size to match the viewport
